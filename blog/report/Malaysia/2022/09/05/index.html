@@ -1,0 +1,105 @@
+<!doctype html>
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <base target="_blank">
+  <meta charset="UTF-8" />
+  <title>How I found Bug in Cuckoo Malaysia, Singapore, Indonesia and Brunei(CVE-2017-9248)</title>
+  <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="twitter:title" content="How I found Bug in Cuckoo Malaysia, Singapore, Indonesia and Brunei(CVE-2017-9248)">
+  <meta name="twitter:image" content="img/Exploit.png">
+  <meta property="og:title" content="How I found Bug in Cuckoo Malaysia, Singapore, Indonesia and Brunei(CVE-2017-9248)">
+  <meta property="og:image" content="img/Exploit.png">
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" type="text/css">
+  <!-- remember, jQuery is completely optional -->
+  <!-- <script type='text/javascript' src='js/jquery-1.11.1.min.js'></script> -->
+  <script type="text/javascript" src="js/jquery.particleground.js"></script>
+  <script type="text/javascript" src="js/demo.js"></script>
+</head>
+
+<body>
+
+
+	  <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">How I found Bug in Cuckoo Malaysia, Singapore, Indonesia and Brunei(CVE-2017-9248)</h1>
+	<p><strong>Base64-based encryption oracle exploit for CVE-2017-9248 (Telerik UI for ASP.NET AJAX dialog handler)</strong></p>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-11-17T00:00:00+00:00" itemprop="datePublished">September 05, 2022
+      </time></p>
+  </header>
+
+  <div class="post-content">
+
+
+<p>My name is Ungku Nazmi, also known as <em>Don</em>.</p>
+
+<p>I’m from Malaysia 🇲🇾, interested in IT Infrastructure , Software ,Penetration Testers, Bug Hunting and Security Research 🔍</p>
+
+<p>You can find me on <a href="https://ungkunazmi.github.io/">Github</a>, <a href="https://www.facebook.com/ungku.nazmi.71">Facebook</a>, or contact me via <a href="https://t.me/donnazmi">Telegram</a>.</p>
+<center><strong><p style="text-align: center; font-style: italic">DISCLAIMER :</p> </strong>
+<strong><p style="text-align: center; font-style: italic">This Vulnerability I've report to MyCert Team September 05, 2022</p></strong></center>
+<p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p>
+<h1 id="preface">[Risk Factors]</h1>
+<p>This exploit attacks a weak encryption implementation to discover the dialog handler key for vulnerable versions of Telerik UI for ASP.NET AJAX, then provides an encrypted link which gives access to a file manager, and arbitrary file upload (e.g. web shell) if remote file permissions allow. Works up to and including version 2017.1.118.</p>
+<h1 id="preface">[Has vendor confirmed or acknowledged the vulnerability?]</h1> <p>true</p>
+<h1 id="preface">[Preface]</h1>
+<p><img src="img/zone-h.png" alt="Web Interface" /></p>
+<p style="text-align: center; font-style: italic"><small>Zone-h Cuckoo Web Defacemet.</small></p>
+<p>A couple of days ago,
+I was browsing <a href="https://www.zone-h.org/ ">Zone-H</a> for checking Malaysian Website Defacecment activity, 
+and I see that some Malaysian websites have been successfully hacked by the Moroccan Revolution Team.
+Immediately I wondered What Exploit they are use…<em>Could I hack it?</em></p>
+
+
+<h1 id="preface">[Getting Started]</h1>
+<p>I randomly scan all the subdomains and right away jumped onto the research. and I found the Vulnerable CVE-2017-9248</p>
+<p><img src="img/scan.png" alt="Scan Vuln" /></p>
+<p style="text-align: center; font-style: italic"><small>Scanning Vuln.</small></p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Vulnerable Found :
+➜  ~ .https://admin.cuckoo.com.my/Telerik.Web.UI.DialogHandler.aspx
+➜  ~ .https://ccms.cuckoo.com.my/Telerik.Web.UI.DialogHandler.aspx
+➜  ~ .https://hd.cuckoo.com.my/Telerik.Web.UI.DialogHandler.aspx
+➜  ~ .https://app.cuckoo.com.my/Telerik.Web.UI.DialogHandler.aspx
+➜  ~ .https://connect.cuckoobrunei.com/telerik.web.ui.dialoghandler.aspx 
+➜  ~ .https://hd.cuckoo.com.my/telerik.web.ui.dialoghandler.aspx
+</code></pre></div></div>
+<p>And Start to Exploit</p>
+<p><img src="img/Exploit.png" alt="Web Interface" /></p>
+<p style="text-align: center; font-style: italic"><small>Exploit Vulnerable Web.</small></p>
+
+<h1 id="preface">[POC Video :]</h1>
+<center><iframe style="width: 720px; height: 400px; margin: 0.5rem" src="https://www.youtube.com/embed/ZRyK3Qu_R1g" frameborder="0" allowfullscreen=""></iframe></center>
+
+<p>This issue has been reported to <strong>MyCert</strong> & improved by <strong>Cuckoo</strong> , <strong>the bug had already been fixed.</strong>.
+
+Anything u learned from the video just for research and educational purposes only
+Do not use the knowledge for illegal things.</p>
+
+
+<p>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.</p>
+
+<p><a href="https://t.me/donnazmi">Telegram</a> , <a href="https://www.facebook.com/ungku.nazmi.71">Facebook</a> , <a href="https://ungkunazmi.github.io/">Github</a></p>
+
+<p>Thanks for reading.</p>
+
+<p>Special thanks to MyCert Team , who helped throughout the process.</p>
+<br>
+<center><p><a href="../../../../../../default.html">[ HOME ]</a></p></center>
+  </div>
+
+</article>
+    </main><footer class="site-footer h-card">
+<center>
+
+<p>You can find me on 🔍 <a href="https://ungkunazmi.github.io/">Github</a>, <a href="https://www.facebook.com/ungku.nazmi.71">Facebook</a>, or contact me via <a href="https://t.me/donnazmi">Telegram</a>.</p>
+</center>
+</body>
+</html>
