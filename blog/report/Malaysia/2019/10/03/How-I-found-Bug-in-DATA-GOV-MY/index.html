@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <base target="_blank">
+  <meta charset="UTF-8" />
+  <title>How I found Bug in DATA.GOV.MY : Weak Default passwd CWE-1391</title>
+  <link rel="shortcut icon" type="image/png" href="assets/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="facebook:title" content="How I found Bug in DATA.GOV.MY : Weak Default passwd (CWE-1391">
+  <meta name="facebook:image" content="img/Userlist.png">
+  <meta name="twitter:title" content="How I found Bug in DATA.GOV.MY : Weak Default passwd (CWE-1391)">
+  <meta name="twitter:image" content="img/Userlist.png">
+  <meta property="og:title" content="How I found Bug in DATA.GOV.MY : Weak Default passwd (CWE-1391)">
+  <meta property="og:image" content="img/Userlist.png">
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous" type="text/css">
+  <!-- remember, jQuery is completely optional -->
+  <!-- <script type='text/javascript' src='js/jquery-1.11.1.min.js'></script> -->
+  <script type="text/javascript" src="js/jquery.particleground.js"></script>
+  <script type="text/javascript" src="js/demo.js"></script>
+</head>
+
+<body>
+
+
+	  <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">How I found Bug in DATA.GOV.MY JasperServer Weak Default passwd CWE-1391</h1>
+	<p><strong>The product uses weak credentials (such as a default key or hard-coded password) that can be calculated, derived, reused, or guessed by an attacker.</strong></p>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-11-17T00:00:00+00:00" itemprop="datePublished">October 03, 2019
+      </time></p>
+  </header>
+
+  <div class="post-content">
+
+
+<p>My name is Ungku Nazmi, also known as <em>Don</em>.</p>
+
+<p>I’m from Malaysia 🇲🇾, interested in IT Infrastructure , Software, Penetration Testers, Bug Hunting and Security Research 🔍</p>
+
+<p>You can find me on <a href="https://ungkunazmi.github.io/">Github</a>, <a href="https://www.facebook.com/ungku.nazmi.71">Facebook</a>, or contact me via <a href="https://t.me/donnazmi">Telegram</a>.</p>
+<center><strong><p style="text-align: center; font-style: italic">DISCLAIMER :</p> </strong>
+<strong><p style="text-align: center; font-style: italic">This Vulnerability I've report on October 03, 2019</p></strong></center>
+
+<h1 id="preface">[Risk Factors]</h1>
+<p>
+Technical Impact: Gain Privileges or Assume Identity</p>
+
+<p>An attacker could easily guess user passwords and gain access admin/user accounts.</p>
+<h1 id="preface">[Preface]</h1>
+<p>Default User Password</p>
+<p>User ID :	superuser , jasperadmin</p>
+<p>Password : superuser , jasperadmin</p>
+<p>Description : System-wide administrator , Administrator for the default organization</p>
+<p>Unsurprisingly, looks like all we got to work with is the web server. Off we go then.</p>
+
+<p>Browsing To The Web Login and Im able to login by Default Admin and Password.</p>
+
+<p><img src="img/Login.png" alt="Login Admin Dashboard Interface" /></p>
+
+<p style="text-align: center; font-style: italic"><small>JasperServer Login Admin Dashboard Interface</small></p>
+
+<p><img src="img/Userlist.png" alt="Userlist Web Interface" /></p>
+
+<p style="text-align: center; font-style: italic"><small>JasperServer User List Dashboard Interface.</small></p>
+
+
+<p>Unfortunately,I am able to create new admin/user account, client-side validation was applied due to Weak Default passwd CWE-1391 functionality allow attacker to login without authentication.</p>
+
+<h1 id="preface">[Affected Component]</h1>
+<p>Login functionality</p>
+
+<h1 id="preface">[Has vendor confirmed or acknowledged the vulnerability?]</h1> <p>true</p>
+ 
+<h1 id="preface">[Concluding]</h1>
+
+<p>Mission accomplished! Full Weak Default passwd CWE-1391 to get Access into thier system.<br />
+
+<p>Since people have been asking, <strong>the bug had already been fixed.</strong><br />
+
+<p>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.</p>
+
+<p><a href="https://t.me/donnazmi">Telegram</a> , <a href="https://www.facebook.com/ungku.nazmi.71">Facebook</a> , <a href="https://ungkunazmi.github.io/">Github</a></p>
+
+<p>Thanks for reading.</p>
+
+<p>Special thanks to Tuan Adzmely Mansor.</p>
+<br>
+<center><p><a href="../../../../../../../default.html">[ HOME ]</a></p></center>
+  </div>
+
+</article>
+    </main><footer class="site-footer h-card">
+<center>
+
+<p>You can find me on 🔍 <a href="https://ungkunazmi.github.io/">Github</a>, <a href="https://www.facebook.com/ungku.nazmi.71">Facebook</a>, or contact me via <a href="https://t.me/donnazmi">Telegram</a>.</p>
+</center>
+</body>
+</html>
