@@ -548,22 +548,17 @@ that doesn't properly validate the file type or by tricking the user into upload
 <p>A couple of days ago,
 I was looking for a certain new exploit 0-day in google search for researching,due so many news article gov data leaked and Hacked, where suddenly I stumbled upon a Login and Register form that was laying around.Some of the website can register as normal user And some of the website has no Register button or Register link at thier home page.
 Immediately I wondered…<em>Could I hack it?</em></p>
-
-<center><p><img src="https://goapps.my/gopro/img/intrologo.png" alt="GoApps" /></p></center>
+<center><p><img src="../../../../images/83-GOV-MY-BUG/intrologo.png" alt="intrologo" /></p></center>
 <p style="text-align: center; font-style: italic"><small>Perhaps. "Secure"? Not so much.</small></p>
-
 <h3 id="CWE2852">
 <a href="#CWE2852" class="headerlink" title="CWE2852">
 </a>[Risk Factors]</h3>
 <p>The impact of this vulnerability is high, supposed code can be executed in the server context or on the client side. 
 The likelihood of detection for the attacker is high. The prevalence is common. As a result the severity of this type of vulnerability is high.</p>
 <p><strong>Vulnerable Apps Version 2.*.*</strong></p>
-
-
 <p>It worked well for me because I was just looking for a Bug , I thought it could be an interesting challenge..</p>
 <p>I was lucky today because apparently I have found a Vendor that provides System Asset that is used on almost 100 government websites.</p>
 <p>*Helpdesk Ticketing Solution *Asset Management System *Store Management System</p>
-
 <h3 id="CWE2853">
 <a href="#CWE2853" class="headerlink" title="CWE2853">
 </a>[Getting Started]</h3>
@@ -991,7 +986,7 @@ and found the upload button which is upload a picture,<em> can I bypass it?</em>
 <a href="#Concluding" class="headerlink" title="Concluding"></a>[Concluding]</h2>
 <p>Mission accomplished! Full Upload Bypassed to get Access into thier system.</p>
 
-<p>Since people have been asking, the bug had already been fixed.<a href="https://cwe.mitre.org/data/definitions/200.html" target="_blank" rel="noopener">CWE-200</a></p>
+<p>Since people have been asking, the bug had already been fixed.<a href="https://cwe.mitre.org/data/definitions/434.html" target="_blank" rel="noopener">CWE-434</a></p>
 
 
 <h2 id="DISCLAIMER">
@@ -1174,6 +1169,91 @@ Do not use the knowledge for illegal things.</em></p>
       <category term="WebSecurity" scheme="ungkunazmi.github.io/categories/WebSecurity/"/>
       <category term="WebSecurity" scheme="ungkunazmi.github.io/tags/WebSecurity/"/>
   </entry>
+   <entry>
+    <title>How I Found Config Database TNB Env Dev AWS [Fix]</title>
+    <link href="ungkunazmi.github.io/2023/01/20/MYTNB-COM-MY/"/>
+    <id>ungkunazmi.github.io/2023/01/20/MYTNB-COM-MY/</id>
+    <published>2023-01-20T00:00:00+00:00</published>
+    <updated>2023-01-20T00:00:00+00:00</updated>
+    
+    <content type="html"><![CDATA[<p>Be yourself use your brain<br><a id="more"></a></p>  
+<h2 id="Preface">
+<a href="#Preface" class="headerlink" title="Preface">
+</a>[Preface]</h2>
+<p>This afternoon I forgot to pay the electricity bill using MyTnb website, I was rushing to pay because I was afraid the bill would be cut-off if I paid late.</p>
+<p>when I wanted to make a payment I searched on google and by accidently, I found some links that contain username and password in plain text.</p>
+
+
+<h2 id="Getting">
+<a href="#Getting" class="headerlink" title="Getting"></a>[Getting Started]</h2>
+<p>I connected the website to my computer and right away jumped onto the research. </p>
+<p>I started off with a good ol’ opened the website interfaces.</p>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br>
+<span class="line">2</span><br>
+<span class="line">3</span><br>
+</pre></td>
+<td class="code"><pre>
+<span class="line">Vuln 1 : http://***dbr.MYTNB.COM.MY/</span><br>
+<span class="line">Vuln 2 : http://***ds.MYTNB.COM.MY/</span><br>
+<span class="line">CWE-200 Vulnerabilities</span><br>
+</pre></td></tr></table></figure>
+<center><p><img src="../../../../images/MYTNB-COM-MY/1.PNG" alt="MYTNB-COM-MY" /></p></center>
+<p>Unsurprisingly, looks like all we got to work with the web server. Off we go then.</p>
+<p>after click the link and do some research of my finding it was a ENV AWS Configuration,which contains the user password database
+and MSSQL port was opened it allows anyone to access the database..</p>
+
+<h2>[Has vendor confirmed or acknowledged the vulnerability?]</h2>
+<p>true</p>
+<p>Ref : </p>
+<p><a href="https://cwe.mitre.org/data/definitions/200.html" target="_blank" rel="noopener">CWE-200</a></p>
+
+<h2 id="Concluding">
+<a href="#Concluding" class="headerlink" title="Concluding"></a>[Concluding]</h2>
+
+<p>Since people have been asking, the bug had already been fixed.<a href="https://cwe.mitre.org/data/definitions/200.html" target="_blank" rel="noopener">CWE-200</a></p>
+
+
+<h2 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER"></a>[DISCLAIMER]</h2>
+
+<strong><p style="text-align: center; font-style: italic">This Bug I've report to MyCert Team January 20 2023</p></strong></center>
+<p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.      </a>
+<br>Thanks for reading.</a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Be yourself&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="WebSecurity" scheme="ungkunazmi.github.io/categories/WebSecurity/"/>
+      <category term="WebSecurity" scheme="ungkunazmi.github.io/tags/WebSecurity/"/>
+  </entry>
   
+  <entry>
+    <title></title>
+    <link href=""/>
+    <id></id>
+    <published></published>
+    <updated></updated>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Be yourself&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="WebSecurity" scheme="ungkunazmi.github.io/categories/WebSecurity/"/>
+      <category term="WebSecurity" scheme="ungkunazmi.github.io/tags/WebSecurity/"/>
+  </entry> 
 
 </feed>
