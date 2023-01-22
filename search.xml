@@ -1,0 +1,889 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>CYBERSECURITY.MY Mail Server Bug (CWE-1392-1393)[Fix]</title>
+    <url>/2018/12/04/CYBERSECURITY-MY-BUG/</url>
+    <content><![CDATA[ <p>Be yourself use your brain<br><a id="more"></a></p>
+<h2 id="WebsiteInformation">
+<a href="#WebsiteInformation" class="headerlink" title="WebsiteInformation">
+</a>Website Information</h2><figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br>
+<span class="line">2</span><br>
+<span class="line">3</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">https://*****.cybersecurity.my</span><br>
+<span class="line">CWE-1392-1393</span><br>
+<span class="line">CYBERSECURITY MALAYSIA WEB MAIL</span><br></pre></td></tr></table></figure>
+<p>As mentioned above, the site is a Mail Server for Cyber Security Malaysia, and I was able to access into the web (Public), which leads to injection vulnerabilities. The following process :</p>
+<h2 id="Bypass">
+<a href="#Bypass" class="headerlink" title="Bypass"></a>Bypass</h2>
+<p>I have posted an article on how to bypass admin password CWE-1392-1393 by using Default credentials user and password, and here I will use its to bypass.No Need to use bruteforce Attack for this bypass . lol.</p>
+<h3 id="Significant">
+<a href="#Significant" class="headerlink" title="Significant"></a>Access Web Mail</h3>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">Access : https://*****.cybersecurity.my</span><br></pre></td></tr></table></figure>
+<p><br>Access Web Mail</p>
+<h3 id="DataStorageName">
+<a href="#DataStorageName" class="headerlink" title="Data storage name"></a>Login Default Credentials Administrator CWE-1392-1393</h3>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">Login Default Credentials Administrator</span><br></pre></td></tr></table></figure>
+<p><br>Login Default</p>
+<h3 id="QueryTableName">
+<a href="#QueryTableName" class="headerlink" title="Query table name"></a>Success Login</h3>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">Success Login....</span><br></pre></td></tr></table></figure>
+<p><br>Login Success</p>
+<h3 id="QueryField">
+<a href="#QueryField" class="headerlink" title="Query field"></a>CWE-1392-1393</h3>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">I was able to use the email and Sent to them for reporting bug I've found</span><br></pre></td></tr></table></figure>
+<p><br>CWE-1392-1393</p>
+<h2 id="Getshell">
+<a href="#Getshell" class="headerlink" title="Getshell"></a>Bug Reported</h2>
+<p>P0C<br>
+<img src="../../../../images/CYBERSECURITY/1.PNG" alt="">
+<br>I use the SUPERUSER@cybersecurity.my Email sending the bug . loxl xD<br>
+<img src="../../../../images/CYBERSECURITY/2.PNG" alt="">
+<br>The bug had already been fixed. after my report <a href="https://cwe.mitre.org/data/definitions/1392.html" target="_blank" rel="noopener">CWE-1392,</a>
+ <a href="https://cwe.mitre.org/data/definitions/1393.html" target="_blank" rel="noopener">CWE-1393</a>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.      </a>
+<br>Thanks for reading.</a>]]></content>
+      <categories>
+        <category>WebSecurity</category>
+      </categories>
+      <tags>
+        <tag>WebSecurity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How I found Bug in DATA.GOV.MY JasperServer Weak Default passwd CWE-1391</title>
+    <url>/2019/10/03/DATA-GOV-MY-BUG/</url>
+    <content><![CDATA[<p>Be yourself use your brain<br><a id="more"></a></p>
+<h2 id="WebsiteInformation">
+<a href="#WebsiteInformation" class="headerlink" title="WebsiteInformation">
+</a>Website Information</h2>
+<p>The product uses weak credentials (such as a default key or hard-coded password) that can be calculated, derived, reused, or guessed by an attacker.</p>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br>
+<span class="line">2</span><br>
+<span class="line">3</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">https://**********.DATA.GOV.MY/</span><br>
+<span class="line">CWE-1391</span><br>
+<span class="line">DATA.GOV.MY JasperServer</span><br></pre></td></tr></table></figure>
+<h3 id="RiskFactors">
+<a href="#RiskFactors" class="headerlink" title="RiskFactors"></a>[Risk Factors]</h3>
+<p>Technical Impact: Gain Privileges or Assume Identity<br>
+An attacker could easily guess user passwords and gain access admin/user accounts.</p>
+<h3 id="Preface">
+<a href="#Preface" class="headerlink" title="Preface"></a>[Preface]</h3>
+<p>Default User Password<br>
+User ID : superuser , jasperadmin<br>
+Password : superuser , jasperadmin<br>
+Description : System-wide administrator , Administrator for the default organization<br>
+<h3 id="Access">
+<a href="#Access" class="headerlink" title="Access"></a>[Access Dashboard]</h3>
+<p>Unsurprisingly, I was able to access into the web (Public), which leads to injection vulnerabilities. The following process :</p>
+<h3 id="JasperServerL">
+<a href="#JasperServerL" class="headerlink" title="JasperServerL"></a>[JasperServer Login]</h3>
+<p>JasperServer Login Admin Dashboard Interface<br>
+<img src="../../../../images/DATA-GOV-MY/1.PNG" alt=""></p>
+<h3 id="JasperServerU">
+<a href="#JasperServerU" class="headerlink" title="JasperServerU"></a>[JasperServer User]</h3>
+<p>JasperServer User List Dashboard Interface.<br>
+<img src="../../../../images/DATA-GOV-MY/2.PNG" alt=""></p>
+<p>Unfortunately,I am able to create new admin/user account, client-side validation was applied due to Weak Default passwd CWE-1391 functionality allow attacker to login without authentication.</p>
+<h2 id="Concluding">
+<a href="#Concluding" class="headerlink" title="Concluding"></a>[Concluding]</h2>
+<p>Mission accomplished! Full Weak Default passwd CWE-1391 to get Access into thier system.
+Since people have been asking, the bug had already been fixed.<br></p>
+<h2>[Affected Component]</h2>
+<p>Login functionality<br></p>
+<h2>[Has vendor confirmed or acknowledged the vulnerability?]</h2>
+<p>true</p>
+ <a href="https://cwe.mitre.org/data/definitions/1393.html" target="_blank" rel="noopener">CWE-1393</a>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.      </a>
+<br>Thanks for reading.</a>
+<center><h2 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER"></a><strong>[DISCLAIMER]</strong></h2>
+<strong>This Vulnerability I've report on October 03, 2019</strong></center>
+<p>Special thanks to Tuan Adzmely Mansor.</p>]]></content>
+	      <categories>
+        <category>WebSecurity</category>
+      </categories>
+      <tags>
+        <tag>WebSecurity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>105 Malaysia IP Vulnerable CVE-2018-13379</title>
+    <url>/2022/08/31/105-IP-MALAYSIA-BUG/</url>
+    <content><![CDATA[<p>Be yourself use your brain<br><a id="more"></a><p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p></p>
+<h2 id="CVE-2018-13379">
+<a href="#CVE-2018-13379" class="headerlink" title="CVE-2018-13379">
+</a>[CVE-2018-13379]</h2>
+<p>CVE-2018-13379 is a pre-authentication vulnerability that allows a threat actor to read arbitrary files by sending specially crafted HTTP requests to FortiOS devices.</p>
+<h2 id="Description">
+<a href="#Description" class="headerlink" title="Description"></a>[Description]</h2>
+<p>An Improper Limitation of a Pathname to a Restricted Directory ("Path Traversal") in Fortinet 
+FortiOS 6.0.0 to 6.0.4, 5.6.3 to 5.6.7 and 5.4.6 to 5.4.12 and 
+FortiProxy 2.0.0, 1.2.0 to 1.2.8, 1.1.0 to 1.1.6, 1.0.0 to 1.0.7 under SSL VPN web portal 
+allows an unauthenticated attacker to download system files via special crafted HTTP resource requests.</p>
+<h2 id="Scanning">
+<a href="#Scanning" class="headerlink" title="Scanning"></a>[Scanning]</h2>
+<p>Scanning asn Default Port Vulnerable 443 and 10443 </p>
+<center><img src="../../../../images/105-IP-MALAYSIA-BUG/1.PNG" alt=""></p></center>
+<h2 id="Result">
+<a href="#Result" class="headerlink" title="Result"></a>[Result]</h2>
+<p/>Result Found 105 Malaysia Ip Vulnerable CVE-2018-13379<p>
+<center><img src="../../../../images/105-IP-MALAYSIA-BUG/2.PNG" alt=""></p></center>
+<center><h2 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER"></a><strong>[DISCLAIMER]</strong></h2>
+<strong><em>This Vulnerability I've report on August 31, 2022 To Cyber999 Team</em></strong></center>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.      </a>
+<br>Thanks for reading.</a>]]></content>
+      <categories>
+        <category>WebSecurity</category>
+      </categories>
+      <tags>
+        <tag>WebSecurity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How I found Bug in Cuckoo Malaysia, Singapore, Indonesia and Brunei</title>
+    <url>/2022/09/05/Cuckoo-MY-ID-BN-BUG/</url>
+    <content><![CDATA[<p>Be yourself use your brain<br><a id="more"></a><p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p></p>
+<center><img src="../../../../images/Cuckoo-MY-ID-BN-BUG/1.PNG" alt=""></p></center>
+<h2 id="RiskFactors">
+<a href="#RiskFactors" class="headerlink" title="RiskFactors"></a>[Risk Factors]</h2>
+<p>This exploit attacks a weak encryption implementation to discover the dialog handler key for vulnerable versions of Telerik UI for ASP.NET AJAX, 
+then provides an encrypted link which gives access to a file manager, 
+and arbitrary file upload (e.g. web shell) if remote file permissions allow. Works up to and including version 2017.1.118.</p>
+<h2 id="Preface">
+<a href="#Preface" class="headerlink" title="Preface"></a>[Preface]</h2>
+<p>A couple of days ago, I was browsing Zone-H for checking Malaysian Website Defacecment activity, and I see that some Malaysian websites have been successfully hacked by the Moroccan Revolution Team. 
+Immediately I wondered What Exploit they are use…<em>Could I hack it?</em></p>
+<p><img src="../../../../images/Cuckoo-MY-ID-BN-BUG/2.PNG" alt="Zone-h Interface" /></p>
+<p style="text-align: center; font-style: italic"><small>Zone-h Cuckoo Web Defacemet.</small></p>
+<h2 id="Getting">
+<a href="#Getting" class="headerlink" title="Getting"></a>[Getting Started]</h2>
+<p>I randomly scan all the subdomains and right away jumped onto the research. and I found the Vulnerable CVE-2017-9248</p>
+Vulnerable Found :
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+➜  ~ .https://*****.cuckoo.com.my/Telerik.Web.UI.DialogHandler.aspx
+➜  ~ .https://****.cuckoo.com.my/Telerik.Web.UI.DialogHandler.aspx
+➜  ~ .https://**.cuckoo.com.my/Telerik.Web.UI.DialogHandler.aspx
+➜  ~ .https://***.cuckoo.com.my/Telerik.Web.UI.DialogHandler.aspx
+➜  ~ .https://co*****.cuckoobrunei.com/telerik.web.ui.dialoghandler.aspx 
+➜  ~ .https://h*.cuckoo.com.my/telerik.web.ui.dialoghandler.aspx
+</code></pre></div></div>
+<h2 id="Exploit">
+<a href="#Exploit" class="headerlink" title="Exploit"></a>[Exploit]</h2>
+<p><img src="../../../../images/Cuckoo-MY-ID-BN-BUG/3.PNG" alt="Exploit Interface" /></p>
+<p style="text-align: center; font-style: italic"><small>Exploit Vulnerable Web.</small></p>
+<h2 id="POC">
+<a href="#POC" class="headerlink" title="POC"></a>[POC Video :]</h2>
+<center><iframe style="width: 720px; height: 400px; margin: 0.5rem" src="https://www.youtube.com/embed/ZRyK3Qu_R1g" frameborder="0" allowfullscreen=""></iframe></center>
+<center><h2 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER"></a><strong>[DISCLAIMER]</strong></h2></center>
+<p>This issue has been reported to MyCert & improved by Cuckoo September 05, 2022 <strong><em>the bug had already been fixed</em></strong>.. </p>
+<p>Special thanks to MyCert Team , who helped throughout the process.</p>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.</p>
+<br>Thanks for reading.</a>]]></content>
+      <categories>
+        <category>WebSecurity</category>
+      </categories>
+      <tags>
+        <tag>WebSecurity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How I found Bug in Pos Malaysia Improper Authorization CWE-285</title>
+    <url>/2022/10/19/POS-COM-MY-BUG/</url>
+    <content><![CDATA[<p>Be yourself use your brain<br><a id="more"></a><p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p></p>
+<h2 id="RiskFactors">
+<a href="#RiskFactors" class="headerlink" title="RiskFactors"></a>[Risk Factors]</h2>
+<p>The software does not perform or incorrectly performs an authorization check when an actor attempts to access a resource or perform an action..</p>
+<h2 id="WebsiteInformation">
+<a href="#WebsiteInformation" class="headerlink" title="WebsiteInformation">
+</a>[Website Information]</h2>
+<p>The product uses weak credentials (such as a default key or hard-coded password) that can be calculated, derived, reused, or guessed by an attacker.</p>
+<center><img src="../../../../images/POS-COM-MY-BUG/1.PNG" alt="Login DMIS"><p><em>Login System DMIS , seems not update and let me try to login xD</em></p></p></center>
+<h2 id="Vulnerability">
+<a href="#Vulnerability" class="headerlink" title="Vulnerability">
+</a>[Vulnerability to reproduce]</h2>
+<p><em>NO EXPLOITATION CODE TO USE</em></p>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br>
+<span class="line">2</span><br>
+<span class="line">3</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">Vulnerable : https://****.POS.COM.MY</span><br>
+<span class="line">u : admin p: admin</span><br>
+<span class="line">https://****.pos.com.my/****/**/User****.asp?namap=HQ/State%20Executive&nop=***&id=admin&username=admin</span><br></pre></td></tr></table></figure>
+<p>Unfortunately, I'm able to login as Admin into the system </p>
+<center><h2 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER"></a><strong>[DISCLAIMER]</strong></h2></center>
+<p>This issue has been reported to Cyber999 Team <strong><em>the bug had already been fixed</em></strong>.. </p>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.</p>
+<br>Thanks for reading.</a>]]></content>
+      <categories>
+        <category>WebSecurity</category>
+      </categories>
+      <tags>
+        <tag>WebSecurity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How I found Bug in ARMY.MIL.MY [SQLi]</title>
+    <url>/2022/10/22/ARMY-MIL-MY-BUG/</url>
+    <content><![CDATA[<p>Be yourself use your brain<br><a id="more"></a><p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p></p>
+<h2 id="RiskFactors">
+<a href="#RiskFactors" class="headerlink" title="RiskFactors"></a>[Risk Factors]</h2>
+<p>SQL injection (SQLi) is a cyberattack that injects malicious SQL code into an application, allowing the attacker to view or modify a database. According to the Open Web Application Security Project, injection attacks, which include SQL injections, were the third most serious web application security risk</p>
+<p>By Passing Authentication : ...</p>
+<p>Identifying Injectable Parameters : ...</p>
+<p>Executing Remote Commands : ...</p>
+<p>Denial of Service : ...</p>
+<p>Database Finger Printing :</p>
+<h2 id="WebsiteInformation">
+<a href="#WebsiteInformation" class="headerlink" title="WebsiteInformation">
+</a>[Website Information]</h2>
+<p>Able to register as normal user.</p>
+<h2 id="Vulnerability">
+<a href="#Vulnerability" class="headerlink" title="Vulnerability">
+</a>[Vulnerability to reproduce]</h2>
+<p><em>NO EXPLOITATION CODE TO USE</em></p>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br>
+<span class="line">2</span><br>
+<span class="line">3</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">Vulnerable : http://**.ARMY.MIL.MY</span><br>
+<span class="line">SQLi Vulnerable</span><br>
+<span class="line">http://**.army.mil.my/*/*/Sa*.php?No_IC=1'</span><br></pre></td></tr></table></figure>
+<p>Unfortunately, I'm able to Inject Sqli Error into the System </p>
+<center><h2 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER"></a><strong>[DISCLAIMER]</strong></h2></center>
+<p>This issue has been reported to Cyber999 Team <strong><em>the bug had already been fixed</em></strong>.. </p>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.</p>
+<br>Thanks for reading.</a>]]></content>
+      <categories>
+        <category>WebSecurity</category>
+      </categories>
+      <tags>
+        <tag>WebSecurity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How I found Bug in MOE.GOV.MY [Unrestricted File Upload]</title>
+    <url>/2022/10/23/MOE-GOV-MY-BUG/</url>
+   <content><![CDATA[<p>Be yourself use your brain<br><a id="more"></a><p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p></p>
+<h2 id="RiskFactors">
+<a href="#RiskFactors" class="headerlink" title="RiskFactors"></a>[Risk Factors]</h2>
+<p>A local file upload vulnerability where an application fails to verify the contents of an uploaded file, 
+allows an attacker to upload a malicious file to the web server or application.</p>
+<p>File upload vulnerabilities are when a web server allows users to upload files to its filesystem without sufficiently validating things like their name, type, contents, or size.</p>
+<h2 id="WebsiteInformation">
+<a href="#WebsiteInformation" class="headerlink" title="WebsiteInformation">
+</a>[Website Information]</h2>
+<p>Able to register as normal user.</p>
+<h2 id="Vulnerability">
+<a href="#Vulnerability" class="headerlink" title="Vulnerability">
+</a>[Vulnerability to reproduce]</h2>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br>
+<span class="line">2</span><br>
+<span class="line">3</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">Vulnerable : https://******.MOE.GOV.MY</span><br>
+<span class="line">Register And Upload File Bypass...</span><br>
+<span class="line">Shelled : https://******.MOE.GOV.MY/****_******_**/RegisterPicture****.cfm</span><br></pre></td></tr></table></figure>
+<p><em>This allows attackers to upload malicious files to the web server, which can then be executed by other users or the server itself.</em></p>
+<p>and Unfortunately, I'm able to Bypass the File Upload Enter into thier server and check to take over more than 197 subdomain MOE.GOV.MY </p>
+<center><img src="../../../../images/MOE-GOV-MY-BUG/2.PNG" alt="Moe Domain"><p><em>197 MOE.GOV.MY subdomain</em></p></p></center>
+<center><img src="../../../../images/MOE-GOV-MY-BUG/1.PNG" alt="Scan Moe"><p><em>MOE.GOV.MY subdomain take over checked</em></p></p></center>
+<p><em>For POC send reported xD</em></p>
+<center><h2 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER"></a><strong>[DISCLAIMER]</strong></h2></center>
+<p>This issue has been reported to Cyber999 Team <strong><em>the bug had already been fixed</em></strong>.. </p>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.</p>
+<br>Thanks for reading.</a>]]></content>
+      <categories>
+        <category>WebSecurity</category>
+      </categories>
+      <tags>
+        <tag>WebSecurity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How I found Bug in SABAH.GOV.MY [Arbitrary File Upload]</title>
+    <url>/2022/10/24/SABAH-GOV-MY-BUG/</url>
+    <content><![CDATA[<p>Be yourself use your brain<br><a id="more"></a><p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p></p>
+<h2 id="RiskFactors">
+<a href="#RiskFactors" class="headerlink" title="RiskFactors"></a>[Risk Factors]</h2>
+<p>An arbitrary file upload vulnerability is a type of security flaw that allows an attacker to upload malicious files onto a server. This can be done by exploiting a vulnerability in a web application 
+that doesn't properly validate the file type or by tricking the user into uploading a malicious file.</p>
+<p>File upload vulnerabilities are when a web server allows users to upload files to its filesystem without sufficiently validating things like their name, type, contents, or size.</p>
+<h2 id="WebsiteInformation">
+<a href="#WebsiteInformation" class="headerlink" title="WebsiteInformation">
+</a>[Website Information]</h2>
+<p>Able to register as normal user.</p>
+<h2 id="Vulnerability">
+<a href="#Vulnerability" class="headerlink" title="Vulnerability">
+</a>[Vulnerability to reproduce]</h2>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br>
+<span class="line">2</span><br>
+<span class="line">3</span><br>
+<span class="line">4</span><br>
+<span class="line">5</span><br>
+<span class="line">6</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">Vulnerable : https://***********.SABAH.GOV.MY</span><br>
+<span class="line">Vulnerable : https://*******.SABAH.GOV.MY</span><br>
+<span class="line">Vulnerable : http://*******.****.SABAH.GOV.MY</span><br>
+<span class="line">Vulnerable : https://******.SABAH.GOV.MY</span><br>
+<span class="line">Register And Upload File Bypass...</span><br>
+<span class="line">Successfully Shelled...</span><br></pre></td></tr></table></figure>
+<p><em>This allows attackers to upload malicious files to the web server, which can then be executed by other users or the server itself.</em></p>
+<p>and Unfortunately, I'm able to Bypass the File Upload Enter into thier server</p>
+<center><h2 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER"></a><strong>[DISCLAIMER]</strong></h2></center>
+<p>This issue has been reported to Cyber999 Team <strong><em>the bug had already been fixed</em></strong>.. </p>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.</p>
+<br>Thanks for reading.</a>]]></content>
+      <categories>
+        <category>WebSecurity</category>
+      </categories>
+      <tags>
+        <tag>WebSecurity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How I found Bug in 83 Malaysia Gov CWE285 CWE-434</title>
+    <url>/2022/11/17/83-GOV-MY-BUG/</url>
+    <content><![CDATA[<p>Be yourself use your brain<br><a id="more"></a></p>
+<h2 id="CWE285">
+<a href="#CWE285" class="headerlink" title="CWE285">
+</a>[CWE285 Preface]</h2>
+83 Malaysia Gov Website Improper Authorization (CWE-285)
+<p>A couple of days ago,
+I was looking for a certain new exploit 0-day in google search for researching,due so many news article gov data leaked and Hacked, where suddenly I stumbled upon a Login and Register form that was laying around.Some of the website can register as normal user And some of the website has no Register button or Register link at thier home page.
+Immediately I wondered…<em>Could I hack it?</em></p>
+<center><p><img src="https://goapps.my/gopro/img/intrologo.png" alt="GoApps" /></p></center>
+<p style="text-align: center; font-style: italic"><small>Perhaps. "Secure"? Not so much.</small></p>
+<h3 id="CWE2852">
+<a href="#CWE2852" class="headerlink" title="CWE2852">
+</a>[Risk Factors]</h3>
+<p>The impact of this vulnerability is high, supposed code can be executed in the server context or on the client side. 
+The likelihood of detection for the attacker is high. The prevalence is common. As a result the severity of this type of vulnerability is high.</p>
+<p><strong>Vulnerable Apps Version 2.*.*</strong></p>
+<p>It worked well for me because I was just looking for a Bug , I thought it could be an interesting challenge..</p>
+<p>I was lucky today because apparently I have found a Vendor that provides System Asset that is used on almost 100 government websites.</p>
+<p>*Helpdesk Ticketing Solution *Asset Management System *Store Management System</p>
+<h3 id="CWE2853">
+<a href="#CWE2853" class="headerlink" title="CWE2853">
+</a>[Getting Started]</h3>
+<p>I connected the website to my computer and right away jumped onto the research.
+I started off with a good ol’ opened all website interfaces and my potential attack vectors.</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Login to the website
+➜  ~ .gov.my/**serv/
+POST /**serv/module/login/act_login.c**?action_target=undefined
+Register to the website
+➜  ~ .gov.my/**serv/
+GET /**serv/module/login/bypass/register.c**
+</code></pre></div></div>
+<p>Unsurprisingly, looks like all we got to work with is the web server. Off we go then.</p>
+<p>Browsing to the website presents a login prompt and Register Link, to which I authenticate with the Fake Registration adding username and password as a normal user/staff due to improper authorization in account creation functionality allow any user create account without authentication and shortly afterwards I’m introduced to the following control and management page.</p>
+<center><p><img src="../../../../images/83-GOV-MY-BUG/Login.png" alt="Web Interface" /></p></center>
+<p style="text-align: center; font-style: italic"><small>The Login's web interface.</small></p>
+<p><img src="../../../../images/83-GOV-MY-BUG/daftar.png" alt="Web Interface" /></p>
+<p style="text-align: center; font-style: italic"><small>The Register web interface.</small></p>
+<p><img src="../../../../images/83-GOV-MY-BUG/loginloadingsuccess.png" alt="Web Interface" /></p>
+<p style="text-align: center; font-style: italic"><small>The Loading web interface.</small></p>
+<p><img src="../../../../images/83-GOV-MY-BUG/HelpDesk.png" alt="Web Interface" /></p>
+<p style="text-align: center; font-style: italic"><small>The Helpdesk web interface.</small></p>
+<p><img src="../../../../images/83-GOV-MY-BUG/Gasset.png" alt="Web Interface" /></p>
+<p style="text-align: center; font-style: italic"><small>The Asset web interface.</small></p>
+<p><img src="../../../../images/83-GOV-MY-BUG/ResponseLogin.png" alt="Web Interface" /></p>
+<h3 id="CWE2854">
+<a href="#CWE2854" class="headerlink" title="CWE2854">
+</a>[Hacking Time]</h3>
+<p>Initially, I was looking for potential input from clients when I came across a page with no user registration link that using same code's / plugin.
+<img src="../../../../images/83-GOV-MY-BUG/LoginNoReg.png" alt="Diagnostics Page" /></p>
+<p style="text-align: center; font-style: italic"><small>The web interface with no register link.</small></p>
+<p>I thought it could be a good place to apply the oldest blackbox technique in the book - <em>Onclick Injection</em>.
+<p>I get the code on the page that have the registration link to create newAccount</em>.
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+Register to the website
+➜  ~ .gov.my/**serv/
+GET /**serv/module/login/bypass/register.c**
+➜  Bypass Code : href="#" onclick="newAccount();">Daftar Baru<
+</code></pre></div></div>
+<p><img src="../../../../images/83-GOV-MY-BUG/OnclickBypass.png" alt="Web Interface" /></p>
+<p style="text-align: center; font-style: italic"><small>The Register Bypass</small></p>
+Unfortunately, client-side validation was applied due Improper authorization in account creation functionality allow any user create account without authentication.</p>
+<p><img src="../../../../images/83-GOV-MY-BUG/SuccessBypass.png" alt="Web Interface" /></p>
+<p style="text-align: center; font-style: italic"><small>Successfully Register Bypassed</small><p>
+<h3 id="CWE2855">
+<a href="#CWE2855" class="headerlink" title="CWE2855">
+</a>[POC VIDEO :]</h3>
+<center><iframe style="width: 720px; height: 400px; margin: 0.5rem" src="https://www.youtube.com/embed/sTSA_sWGM44" frameborder="0" allowfullscreen=""></iframe></center>
+<h3 id="CWE2856">
+<a href="#CWE2856" class="headerlink" title="CWE2856">
+</a>[Concluding]</h3>
+<p>Mission accomplished! Full Bypass Login to get Access into thier system.<br /><p>
+<p>Since people have been asking, <strong>the bug had already been fixed.</strong><br /><p>
+<h2 id="CWE434">
+<a href="#CWE434" class="headerlink" title="CWE434">
+</a>[CWE-434 Preface]</h2>
+<p>83 Malaysia Gov Website Arbitrary File Upload (CWE-434)
+Combined exploit for Improper Authorization (CWE-285)
+File upload for Arbitrary File Upload (CWE-434)- will automatically upload the file An arbitrary file 
+upload vulnerability in the picture upload function of Asset_Module (*-asset)(*-Serv) allows attackers to execute arbitrary code via .c** file extension.<p>
+The application failed to validate file uploaded by any authenticated user, leading to code execution
+<h3 id="CWE4341">
+<a href="#CWE4341" class="headerlink" title="CWE4341">
+</a>[Risk Factors]</h3>
+The impact of this vulnerability is high, supposed code can be executed in the server context or on the client side. The likelihood of detection for the attacker is high. 
+The prevalence is common. 
+As a result the severity of this type of vulnerability is high.
+<h3 id="CWE4342">
+<a href="#CWE4342" class="headerlink" title="CWE4342">
+</a>[Vulnerability to reproduce]</h3>
+<p>Log in to the Dashboard Asset_Module by using normal user of the website.</p>
+<p>Click On "Carian Pantas" or "Borang Aduan" find Upload button.</p>
+<p><img src="../../../../images/83-GOV-MY-BUG/Gasset.png" alt="Web Interface" /></p>
+<p style="text-align: center; font-style: italic"><small>Carian Pantas web interface.</small></p>
+<p><img src="../../../../images/83-GOV-MY-BUG/GassetVuln.png" alt="Web Interface" /></p>
+<p style="text-align: center; font-style: italic"><small>Carian Pantas Page Vulnerable.</small></p>
+<p><img src="../../../../images/83-GOV-MY-BUG/HelpDesk.png" alt="Web Interface" /></p>
+<p style="text-align: center; font-style: italic"><small>Borang Aduan web interface.</small></p>
+<p><img src="../../../../images/83-GOV-MY-BUG/dsp_borang_isi.png" alt="Web Interface" /></p>
+<p style="text-align: center; font-style: italic"><small>Borang Aduan Page Vulnerable.</small></p>
+<p>Open BurpSuite Capture thier Data Click "Intercept is On" before Uploading...</p>
+<p>Open back your browser Upload the file nouser.jpg (Make sure turn on your Intercept burp suite)</p>
+<p>Check Burp Suite will show the data upload, and change filename to nouser.jpg to nouser.c** </p>
+<p>the content of the file is as follows video:</p>
+<h3 id="CWE4343">
+<a href="#CWE4343" class="headerlink" title="CWE4343">
+</a>[POC VIDEO :]</h3>
+<center><iframe style="width: 720px; height: 400px; margin: 0.5rem" src="https://www.youtube.com/embed/sTSA_sWGM44" frameborder="0" allowfullscreen=""></iframe></center>
+<p>Click Forward to send the file into the server</p>
+<p>Visit your Shell</p> 
+<p>Shell Path :</p>
+<p>localhost/**serv_document_***/lampiran_aduan/nouser.c**</p>
+<p>localhost/**serv_picture_***/asset/nouser.c**</p>
+<p>After I'm able to find this vulnerability on this Vendor code/plugin, I create a simple python scan, to check the vuln.<p/>
+<center><p><img src="../../../../images/83-GOV-MY-BUG/scan.png" alt="Scan" /></p></center>
+<p style="text-align: center; font-style: italic"><small>Scanning All Web Vulnerable.</small></p>
+<p>The path of vuln for scan /**serv (requests.get) , the result shown VULNERABLE due all this server using same code.</p>
+<p>And finally I report this vulnerability to MyCert Team to contact the Vendor and Fix the problem.</p>
+<h3 id="CWE4344">
+<a href="#CWE4344" class="headerlink" title="CWE4344">
+</a>[Updating Reported]</h3>
+<p>I think I want to try to see if they really fix the existing weaknesses.<em>Could I bypass it again?</em></p>
+<p>Date : 7 January 2023<p>
+<p>After report this issue bug vulnerability of this application , I was unable to upload shell bypass .c** file and I'm assuming they've fixed bypass shell upload.</p>
+<p>*I was able to login into the web server as normal user after this hack/report</p>
+<p>Some of the website has been Fix due my reported Onclick Create Account Bypass
+<p>So, I try to login into the dashboard , and bypass another file extention and unexpected because I can still bypass other files other than the .c** file this file called .config </p>
+<p></p>
+<center><p><img src="../../../../images/83-GOV-MY-BUG/shell.png" alt="Scan" /></p></center>
+<p style="text-align: center; font-style: italic"><small>Successfull bypass .config files</small></p>
+<h3 id="CWE4345">
+<a href="#CWE4345" class="headerlink" title="CWE4345">
+</a>[Concluding]</h3>
+<p>Mission accomplished! Full Bypass Login to get Access into thier system.<br /><p>
+<p>Since people have been asking, <strong>the bug had already been fixed.</strong><br /><p>
+<br>Sorry about my english, is so bad😅</a>
+<br>Thanks for reading.</a>
+<h3 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER">
+</a>DISCLAIMER :</h3>
+<strong><p style="text-align: center; font-style: italic">This Exploit I've report to MyCert Team November 2022 9:50 PM</p></strong></center>
+<p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p>
+<h1 id="preface">[Affected Product Code Base]</h1>
+<p>Vulnerable Apps Version 2.*.*</p>
+<h1 id="preface">[Vulnerable path]</h1>
+<p>localhost/**serv/module/*-asset</p>
+<p>localhost/**serv/module/aduan</p>
+<h1 id="preface">[Vendor of Product]</h1>
+<p>Go**** Technology Sdn Bhd</p>
+<h1 id="preface">[Affected Component]</h1>
+<p>Login functionality,File upload functionality, Picture functionality</p>
+<h2 id="preface">[Has vendor confirmed or acknowledged the vulnerability?]</h2> <p>true</p>
+<h1 id="preface">[Additional Information]</h1>
+<p>This registration and file uploaded would be accepted by the application and stored on the server of the application database. </p>]]></content>
+      <categories>
+        <category>WebSecurity</category>
+      </categories>
+      <tags>
+        <tag>WebSecurity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JHEV.GOV.MY Unrestricted File Upload Vuln</title>
+    <url>/2022/11/18/JHEV-GOV-MY-BUG/</url>
+    <content><![CDATA[<p>Be yourself use your brain<br><a id="more"></a></p>
+<h2 id="WebsiteInformation">
+<a href="#WebsiteInformation" class="headerlink" title="WebsiteInformation">
+</a>Website Information</h2><figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br>
+<span class="line">2</span><br>
+<span class="line">3</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">https://k***********.JHEV.GOV.MY/k***********/</span><br>
+<span class="line">CWE-434: Unrestricted Upload of File</span><br>
+<span class="line">Vuln :https://k***********.JHEV.GOV.MY/k***********/********02.asp</span><br></pre></td></tr></table></figure>
+<p>The "unrestricted file upload" term is used in vulnerability databases and elsewhere, but it is insufficiently precise. 
+The phrase could be interpreted as the lack of restrictions on the size or number of uploaded files, which is a resource consumption issue.</p>
+<h2 id="Bypass">
+<a href="#Bypass" class="headerlink" title="Bypass"></a>Bypass</h2>
+<p>As mentioned above, the site is a Subdomain for JHEV.GOV.MY, and I was able to access into the web (Public), which leads to injection vulnerabilities. The following process :</p>
+<h3 id="Significant">
+<a href="#Significant" class="headerlink" title="Significant"></a>Access Web</h3>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">Access : https://k***********.JHEV.GOV.MY/k***********/</span><br></pre></td></tr></table></figure>
+<p><br>Access Web</p>
+<h3 id="DataStorageName">
+<a href="#DataStorageName" class="headerlink" title="Data storage name"></a>Register And Upload Files(Shell)</h3>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">https://k***********.JHEV.GOV.MY/k***********/********02.asp</span><br></pre></td></tr></table></figure>
+<p><br>Register And Upload Files(Shell)</p>
+<h3 id="QueryTableName">
+<a href="#QueryTableName" class="headerlink" title="Query table name"></a>Shell Upload Success</h3>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">Success Upload : https://*****.jhev.gov.my/*******/admin/web/shared/550307048956-DP-config.***?path=E:\******\</span><br></pre></td></tr></table></figure>
+<p><br>Shell Upload Success</p>
+<h3 id="QueryField">
+<a href="#QueryField" class="headerlink" title="Query field"></a>CWE-434: Unrestricted Upload of File</h3>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">I was able to view all file system on the server</span><br></pre></td></tr></table></figure>
+<p><br>CWE-434</p>
+<h2 id="Getshell">
+<a href="#Getshell" class="headerlink" title="Getshell"></a>Bug Reported</h2>
+<br>The bug had already been fixed. after my report <a href="https://cwe.mitre.org/data/definitions/434.html" target="_blank" rel="noopener">CWE-434,</a>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.      </a>
+<br>Thanks for reading.</a>]]></content>
+      <categories>
+        <category>WebSecurity</category>
+      </categories>
+      <tags>
+        <tag>WebSecurity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How I Found SPR.GOV.MY SQLi Vuln [Fix]</title>
+    <url>/2022/11/28/SPR-GOV-MY-SQLi/</url>
+    <content><![CDATA[<p>Be yourself use your brain<br><a id="more"></a></p>
+<h2 id="WebsiteInformation">
+<a href="#WebsiteInformation" class="headerlink" title="WebsiteInformation">
+</a>Website Information</h2><figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br>
+<span class="line">2</span><br>
+<span class="line">3</span><br>
+<span class="line">4</span><br>
+<span class="line">5</span><br>
+</pre></td>
+<td class="code"><pre>
+<span class="line">http://result*****.SPR.GOV.MY</span><br>
+<span class="line">http://s****.SPR.GOV.MY</span><br>
+<span class="line">CWE-89 SQLi Vulnerabilities</span><br>
+<span class="line">Vuln :http://result*****.SPR.GOV.MY/mod***/ke*******/paparan/5_***********.php?kod=00100%27</span><br>
+<span class="line">Vuln :http://s****.SPR.GOV.MY/s**/m*****/5_***********.php?kod=13900</span><br>
+</pre></td></tr></table></figure>
+<p>The software constructs all or part of an SQL command using externally-influenced input from an upstream component, but it does not neutralize or incorrectly neutralizes special elements that could modify the intended SQL command when it is sent to a downstream component.</p>
+<p>Without sufficient removal or quoting of SQL syntax in user-controllable inputs, the generated SQL query can cause those inputs to be interpreted as SQL instead of ordinary user data. This can be used to alter query logic to bypass security checks, or to insert additional statements that modify the back-end database, possibly including execution of system commands.
+SQL injection has become a common issue with database-driven web sites. The flaw is easily detected, and easily exploited, and as such, any site or software package with even a minimal user base is likely to be subject to an attempted attack of this kind. This flaw depends on the fact that SQL makes no real distinction between the control and data planes.</p>
+<h2 id="Bypass">
+<a href="#Bypass" class="headerlink" title="Bypass"></a>Bypass</h2>
+<p>As mentioned above, the site is a Subdomain for SPR.GOV.MY, and I was able to access into the web (Public), which leads to injection vulnerabilities. The following process :</p>
+<h3 id="Significant">
+<a href="#Significant" class="headerlink" title="Significant"></a>Access Web</h3>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br>
+<span class="line">2</span><br>
+</pre></td>
+<td class="code"><pre>
+<span class="line">Access : http://result*****.SPR.GOV.MY</span><br>
+<span class="line">Access : http://s****.SPR.GOV.MY</span><br>
+</pre></td></tr></table></figure>
+<p><br>Access Web</p>
+<h3 id="DataStorageName">
+<a href="#DataStorageName" class="headerlink" title="Data storage name"></a>Inject Some SQL Payload</h3>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br>
+<span class="line">2</span><br>
+</pre></td>
+<td class="code"><pre>
+<span class="line">http://result*****.SPR.GOV.MY/mod***/ke*******/paparan/5_***********.php?kod=00100%27<</span><br>
+<span class="line">http://s****.SPR.GOV.MY/s**/m*****/5_***********.php?kod=13900<</span><br>
+</pre></td></tr></table></figure>
+<p><br>SQLi Payload Injection</p>
+<h3 id="QueryTableName">
+<a href="#QueryTableName" class="headerlink" title="Query table name"></a>SQLi Success</h3>
+<center><p><img src="../../../../images/SPR-GOV-MY-SQLi/1.PNG" alt="SPR-GOV-MY-SQLi" /></p></center>
+<p style="text-align: center; font-style: italic"><small>http://result*****.SPR.GOV.MY</small></p>
+<center><p><img src="../../../../images/SPR-GOV-MY-SQLi/2.PNG" alt="SPR-GOV-MY-SQLi" /></p></center>
+<p style="text-align: center; font-style: italic"><small>http://s****.SPR.GOV.MY</small></p>
+<p><br>SQLi Success</p>
+<h3 id="QueryField">
+<a href="#QueryField" class="headerlink" title="Query field"></a>CWE-89 SQLi Vulnerabilities</h3>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br></pre></td>
+<td class="code"><pre>
+<span class="line">I was able to inject the system on the server</span><br></pre></td></tr></table></figure>
+<p><br>CWE-89</p>
+<h2 id="Getshell">
+<a href="#Getshell" class="headerlink" title="Getshell"></a>Bug Reported</h2>
+<br>The bug had already been fixed. after my report <a href="https://cwe.mitre.org/data/definitions/89.html" target="_blank" rel="noopener">CWE-89</a>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.      </a>
+<br>Thanks for reading.</a>]]></content>
+      <categories>
+        <category>WebSecurity</category>
+      </categories>
+      <tags>
+        <tag>WebSecurity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How I found Bug in TM.COM.MY LiveChat Arbitrary File Upload CWE-434 [Fix]</title>
+    <url>/2023/01/05/TM-COM-MY-BUG/</url>
+    <content><![CDATA[<p>Be yourself use your brain<br><a id="more"></a></p>  
+<h2 id="Preface">
+<a href="#Preface" class="headerlink" title="Preface">
+</a>[Preface]</h2>
+<p>lately the internet at my house has been quite slow, so I wanted to make a report to TM on the TM live chat website, 
+I accidentally found the upload button,browsing to the web and I able to upload Picture. I wondered, I wonder, I am wondering…<em>Could I hack it???</em></p></p>
+<p>TM LiveChat bug</p>
+<center><p><img src="../../../../images/TM-COM-MY-BUG/2.PNG" alt="TM LiveChat" /></p></center>
+<p style="text-align: center; font-style: italic"><small>TM LiveChat Home Page</small></p>
+<h2 id="Risk">
+<a href="#Risk" class="headerlink" title="Risk">
+</a>[Risk Factors]</h2>
+<p>Technical Impact: Execute Unauthorized Code or Commands Arbitrary code execution is possible if an uploaded file is interpreted and executed as code by the recipient. 
+This is especially true for .asp and .php extensions uploaded to web servers because these file types are often treated as automatically executable, 
+even when file system permissions do not specify execution. For example, in Unix environments, programs typically cannot run unless the execute bit is set, 
+but PHP programs may be executed by the web server without directly invoking them on the operating system.</p>
+<h2 id="Getting">
+<a href="#Getting" class="headerlink" title="Getting"></a>[Getting Started]</h2>
+<p>I connected the website to my computer and right away jumped onto the research. </p>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br>
+<span class="line">2</span><br>
+<span class="line">3</span><br>
+</pre></td>
+<td class="code"><pre>
+<span class="line">Access : live****.tm.com.my</span><br>
+<span class="line"> CWE-434 Vulnerabilities</span><br>
+<span class="line">Vuln : live****.tm.com.my  </span><br>
+</pre></td></tr></table></figure>
+<p>Unsurprisingly, looks like all we got to work with the web server. Off we go then.</p>
+<p>Browsing to the website presents Register form to start live chat</p>
+<p>The register form allow me to insert any fake infos. and able to access the live chat</p>
+<h2 id="Hacking">
+<a href="#Hacking" class="headerlink" title="Hacking"></a>[Hacking Time]</h2>
+<p>Initially, At first, I can register fake information to access the live chat dashboard, I am greeted well by the chat bot, lol xD.
+and found the upload button which is upload a picture,<em> can I bypass it?</em></p>
+<center><p><img src="../../../../images/TM-COM-MY-BUG/1.PNG" alt="TM LiveChat" /></p></center>
+<p style="text-align: center; font-style: italic"><small>TM LiveChat Upload Bypass</small></p>
+<p>Unfortunately, ,I am able to Upload Shell, client-side validation was applied due to Arbitrary File Upload CWE-434 functionality allow attacker to Upload without authentication.
+</p>
+<h2>[Affected Component]</h2>
+<p>Upload functionality</p>
+<h2>[Has vendor confirmed or acknowledged the vulnerability?]</h2>
+<p>true</p>
+<h2 id="Concluding">
+<a href="#Concluding" class="headerlink" title="Concluding"></a>[Concluding]</h2>
+<p>Mission accomplished! Full Upload Bypassed to get Access into thier system.</p>
+<p>Since people have been asking, the bug had already been fixed.<a href="https://cwe.mitre.org/data/definitions/200.html" target="_blank" rel="noopener">CWE-200</a></p>
+<h2 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER"></a>[DISCLAIMER]</h2>
+<strong><p style="text-align: center; font-style: italic">This Bug I've report to MyCert Team January 05 2023</p></strong></center>
+<p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.      </a>
+<br>Thanks for reading.</a>]]></content>
+      <categories>
+        <category>WebSecurity</category>
+      </categories>
+      <tags>
+        <tag>WebSecurity</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>How I Found JPN ATM PDRM PENJARA DB CONFIG BUG IN SPR.GOV.MY CWE-200 [Fix]</title>
+    <url>/2023/01/13/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/</url>
+   <content><![CDATA[<p>Be yourself use your brain<br><a id="more"></a></p>  
+<h2 id="Preface">
+<a href="#Preface" class="headerlink" title="Preface">
+</a>[Preface]</h2>
+<p>A few days ago, I was scrolling my Facebook and saw the Sinar Harian news about SPR data leakage, and so many news articles about Malaysian people's data being leaked and hacked,</p>
+<p>As a registrant, I also need to be concerned about the security of my PRIVACY DATA.so I want to continue the research is it true that SPR can be leaked or can be hacked?</p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/3.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<a href="https://www.sinarharian.com.my/article/231151/berita/semasa/pru15-spr-nafi-data-peribadi-pengundi-bocor" target="_blank" rel="noopener"><p style="text-align: center; font-style: italic"><small>Sinar Harian News Link</small></p></a> 
+<p>Where suddenly I came across the SPR link found on google. website can register as a normal user I thought it could be an interesting challenge.., Immediately I wondered…Could It can be hacked?</p>
+<h2 id="Getting">
+<a href="#Getting" class="headerlink" title="Getting"></a>[Getting Started]</h2>
+<p>I connected the website to my computer and right away jumped onto the research. </p>
+<p>I started off with a good ol’ opened the website interfaces and my potential attack vectors.</p>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br>
+<span class="line">2</span><br>
+<span class="line">3</span><br>
+</pre></td>
+<td class="code"><pre>
+<span class="line">https://*********.SPR.GOV.MY</span><br>
+<span class="line">CWE-200 Vulnerabilities</span><br>
+<span class="line">Vuln :https://*********.SPR.GOV.MY/t********  </span><br>
+</pre></td></tr></table></figure>
+<p>Unsurprisingly, looks like all we got to work with the web server. Off we go then.</p>
+<p>Browsing to the website presents a login prompt and Register,and I Found something suspicious phpdebugbar on web page element.
+it made me wonder and made me want to click the link.</p>
+<p>What makes me wonder more is that I don't need to login or register to click the link.</p>
+<p>The following is a picture of the main display of the website and phpdebuger :</p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/5.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Home Page</small></p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/4.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ phpdebugbar </small></p>
+<h2 id="Hacking">
+<a href="#Hacking" class="headerlink" title="Hacking"></a>[Hacking Time]</h2>
+<p>Initially, I was looking for potential input from clients when I came across a page register and login.</p>
+<p>But I'm more interested in clicking the phpdebugbar link that has been provided publicly. and it is a Telescope</p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/7.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ View in Telescope </small></p>
+<p>Unfortunately, I can access the Telescop view, it stores various sensitive data including Admin Login Usename Password.
+</p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/6.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Telescope Cache </small></p>
+<p>I have found various accesses to enter the website as an administrator by pressing the Telescop display and in the "cache" section and 
+in this section the administrator's login data is stored.</p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/2.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Telescope Cache Sensitive Data </small></p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/8.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Telescope Cache Sensitive Data </small></p>
+<p>without wasting time I log into the admin system using data taken from Telescope view "cache"</p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/1.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ SPR Admin </small></p>
+<p>More surprising and unexpected,
+I can see all registered users more than 10 million users excluding others. I also had time to see the configuration of the JPN PDRM PRISON ATM database</p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/9.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ SPR Userdata </small></p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/10.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Webservice Database </small></p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/11.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Webservice Database </small></p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/12.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Webservice Database </small></p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/13.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Webservice Database </small></p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/14.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Webservice Database </small></p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/15.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Webservice Database </small></p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/16.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Webservice Database </small></p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/17.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Webservice Database </small></p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/18.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Webservice Database </small></p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/19.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Webservice Database </small></p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/20.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Webservice Database </small></p>
+<center><p><img src="../../../../images/JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY/21.PNG" alt="JPN-ATM-PDRM-PENJARA-DB-CONFIG-BUG-IN-SPR-GOV-MY" /></p></center>
+<p style="text-align: center; font-style: italic"><small>https://*********.SPR.GOV.MY/ Webservice Database </small></p>
+<h2 id="Remediation">
+<a href="#Remediation" class="headerlink" title="Remediation"></a>[Remediation]</h2>
+<p>The web application uses Laravel framework. Laravel Telescope is enabled and accessible. </p>
+<p>In production environment, it leads to disclosure of sensitive information about the web application.</p>
+<p>Disable the Telescope or restrict access to it</p>
+<h2>[Classification]</h2>
+<p>CWE-200 CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:L/I:N/A:N</p>
+<h2>[Affected Component]</h2>
+<p>Telescope</p>
+<h2>[Has vendor confirmed or acknowledged the vulnerability?]</h2>
+<p>true</p>
+<p>Ref : </p>
+<p><a href="https://www.acunetix.com/vulnerabilities/web/laravel-telescope-open/" target="_blank" rel="noopener">Laravel-Telescope-Open</a></p>
+<p><a href="https://cwe.mitre.org/data/definitions/200.html" target="_blank" rel="noopener">CWE-200</a></p>
+<h2 id="Concluding">
+<a href="#Concluding" class="headerlink" title="Concluding"></a>[Concluding]</h2>
+<p>Mission accomplished! to get Access into thier system.</p>
+<p>Since people have been asking, the bug had already been fixed.<a href="https://cwe.mitre.org/data/definitions/200.html" target="_blank" rel="noopener">CWE-200</a></p>
+<h2 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER"></a>[DISCLAIMER]</h2>
+<strong><p style="text-align: center; font-style: italic">This Bug I've report to MyCert Team January 13 2023</p></strong></center>
+<p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.      </a>
+<br>Thanks for reading.</a>]]></content>
+      <categories>
+        <category>WebSecurity</category>
+      </categories>
+      <tags>
+        <tag>WebSecurity</tag>
+      </tags>
+  </entry>
+
+ 
+</search>
