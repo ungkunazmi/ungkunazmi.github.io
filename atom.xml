@@ -1150,14 +1150,62 @@ Do not use the knowledge for illegal things.</em></p>
       <category term="WebSecurity" scheme="ungkunazmi.github.io/tags/WebSecurity/"/>
   </entry>
   
-  <entry>
-    <title></title>
-    <link href=""/>
-    <id></id>
-    <published></published>
-    <updated></updated>
+
+   <entry>
+    <title>How I Found Config Database TNB Env Dev AWS [Fix]</title>
+    <link href="ungkunazmi.github.io/2023/01/20/MYTNB-COM-MY/"/>
+    <id>ungkunazmi.github.io/2023/01/20/MYTNB-COM-MY/</id>
+    <published>2023-01-20T00:00:00+00:00</published>
+    <updated>2023-01-20T00:00:00+00:00</updated>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p>Be yourself use your brain<br><a id="more"></a></p>  
+<h2 id="Preface">
+<a href="#Preface" class="headerlink" title="Preface">
+</a>[Preface]</h2>
+<p>This afternoon I forgot to pay the electricity bill using MyTnb website, I was rushing to pay because I was afraid the bill would be cut-off if I paid late.</p>
+<p>when I wanted to make a payment I searched on google and by accidently, I found some links that contain username and password in plain text.</p>
+
+
+<h2 id="Getting">
+<a href="#Getting" class="headerlink" title="Getting"></a>[Getting Started]</h2>
+<p>I connected the website to my computer and right away jumped onto the research. </p>
+<p>I started off with a good ol’ opened the website interfaces.</p>
+<figure class="highlight plain"><table><tr>
+<td class="gutter"><pre>
+<span class="line">1</span><br>
+<span class="line">2</span><br>
+<span class="line">3</span><br>
+</pre></td>
+<td class="code"><pre>
+<span class="line">Vuln 1 : http://***dbr.MYTNB.COM.MY/</span><br>
+<span class="line">Vuln 2 : http://***ds.MYTNB.COM.MY/</span><br>
+<span class="line">CWE-200 Vulnerabilities</span><br>
+</pre></td></tr></table></figure>
+<center><p><img src="../../../../images/MYTNB-COM-MY/1.PNG" alt="MYTNB-COM-MY" /></p></center>
+<p>Unsurprisingly, looks like all we got to work with the web server. Off we go then.</p>
+<p>after click the link and do some research of my finding it was a ENV AWS Configuration,which contains the user password database
+and MSSQL port was opened it allows anyone to access the database..</p>
+
+<h2>[Has vendor confirmed or acknowledged the vulnerability?]</h2>
+<p>true</p>
+<p>Ref : </p>
+<p><a href="https://cwe.mitre.org/data/definitions/200.html" target="_blank" rel="noopener">CWE-200</a></p>
+
+<h2 id="Concluding">
+<a href="#Concluding" class="headerlink" title="Concluding"></a>[Concluding]</h2>
+
+<p>Since people have been asking, the bug had already been fixed.<a href="https://cwe.mitre.org/data/definitions/200.html" target="_blank" rel="noopener">CWE-200</a></p>
+
+
+<h2 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER"></a>[DISCLAIMER]</h2>
+
+<strong><p style="text-align: center; font-style: italic">This Bug I've report to MyCert Team January 20 2023</p></strong></center>
+<p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.      </a>
+<br>Thanks for reading.</a>]]></content>
     
     <summary type="html">
     
@@ -1169,6 +1217,8 @@ Do not use the knowledge for illegal things.</em></p>
       <category term="WebSecurity" scheme="ungkunazmi.github.io/categories/WebSecurity/"/>
       <category term="WebSecurity" scheme="ungkunazmi.github.io/tags/WebSecurity/"/>
   </entry>
+  
+
    <entry>
     <title>How I Found Config Database TNB Env Dev AWS [Fix]</title>
     <link href="ungkunazmi.github.io/2023/01/20/MYTNB-COM-MY/"/>
@@ -1237,13 +1287,54 @@ Do not use the knowledge for illegal things.</em></p>
   </entry>
   
   <entry>
-    <title></title>
-    <link href=""/>
-    <id></id>
-    <published></published>
-    <updated></updated>
+    <title>Ghosted Multi-0day CVE Exploit tools</title>
+    <link href="ungkunazmi.github.io/2022/11/21/Ghosted-Multi-0day-CVE-Exploit-Tools/"/>
+    <id>ungkunazmi.github.io/2022/11/21/Ghosted-Multi-0day-CVE-Exploit-Tools/</id>
+    <published>2022-11-21T00:00:00.00</published>
+    <updated>2022-11-21T00:00:00.00</updated>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p>Be yourself use your brain<br><a id="more"></a></p>  
+<h2 id="About">
+<a href="#About" class="headerlink" title="About">
+</a>[Ghosted Multi-0day CVE Exploit Tools]</h2>
+
+<center><p><img src="../../../../images/Ghosted-Multi-0day-CVE-Exploit-Tools/1.PNG" alt="Ghosted-Multi-0day" /></p></center>
+<p>Ghosted Multi-0day CVE Exploit Tools </p>
+<p>Python With GUI interface.</p>
+<p>This tools for Education and Research purpose only.</p>
+<p>I expect there will be many mistakes. Welcome to point out, my contact information has been posted below, thank you very much!</p>
+<p>Yang mahu boleh DM saya di Telegram :<a href="https://t.me/donnazmi">@Donnazmi</a> untuk menambah baik.</p>
+<p>Feel free to improve with your payloads and techniques !</p>
+<p>It is planned to add an exploit module every day next Year.</p>
+<p>so welcome every one of you the driving force for me to move forward!</p>
+<p>Disclaimer: <strong>This project is only for authorized use, and it is forbidden to use this project for illegal operations, otherwise you will bear the consequences yourself</strong></p>
+<p>Feture API Search To Collect IP and Websites :</p>
+<p>【√】One-Click Exploiter More than 50 TOP CVE Module .</p>
+<p>【√】Config Criminal IP Max Search : 10,000</p>
+<p>【√】Config Shodan Search</p>
+<p>【√】Config Hunter Search</p>
+<p>【√】Pentest Payloads All The Thing</p>
+<p>To-Do List | Things to do</p>
+<p>*(Priority) Add other search engines, such as: Censys, Zoomeye, Quakeetc.</p>
+<p>*Add proxy mode.</p>
+<p>*Others have not been thought of yet, if you guys have any ideas, you can issuesput them directly in it.</p>
+<h2 id="Video">
+<a href="#Video" class="headerlink" title="Video">
+</a>[Video :]</h1></h2>
+<center><iframe style="width: 720px; height: 400px; margin: 0.5rem" src="https://www.youtube.com/embed/AErdWon-sIU" frameborder="0" allowfullscreen=""></iframe></center>
+<p><a href="https://t.me/donnazmi">Telegram</a> , <a href="https://www.facebook.com/ungku.nazmi.71">Facebook</a> , <a href="https://ungkunazmi.github.io/">Github</a></p>
+
+<p>Thanks for reading.</p>
+
+
+<h2 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER"></a>[DISCLAIMER]</h2>
+
+<p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.      </a>
+<br>Thanks for reading.</a>]]></content>
     
     <summary type="html">
     
@@ -1252,8 +1343,8 @@ Do not use the knowledge for illegal things.</em></p>
     </summary>
     
     
-      <category term="WebSecurity" scheme="ungkunazmi.github.io/categories/WebSecurity/"/>
-      <category term="WebSecurity" scheme="ungkunazmi.github.io/tags/WebSecurity/"/>
-  </entry> 
+      <category term="WebSecurity" scheme="ungkunazmi.github.io/categories/Tool/"/>
+      <category term="WebSecurity" scheme="ungkunazmi.github.io/tags/Tool/"/>
+  </entry>
 
 </feed>

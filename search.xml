@@ -934,6 +934,58 @@ Do not use the knowledge for illegal things.</em></p>
         <tag>WebSecurity</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Ghosted Multi-0day CVE Exploit tools</title>
+    <url>/2022/11/21/Ghosted-Multi-0day-CVE-Exploit-Tools/</url>
+   <content><![CDATA[<p>Be yourself use your brain<br><a id="more"></a></p>  
+<h2 id="About">
+<a href="#About" class="headerlink" title="About">
+</a>[Ghosted Multi-0day CVE Exploit Tools]</h2>
+
+<center><p><img src="../../../../images/Ghosted-Multi-0day-CVE-Exploit-Tools/1.PNG" alt="Ghosted-Multi-0day" /></p></center>
+<p>Ghosted Multi-0day CVE Exploit Tools </p>
+<p>Python With GUI interface.</p>
+<p>This tools for Education and Research purpose only.</p>
+<p>I expect there will be many mistakes. Welcome to point out, my contact information has been posted below, thank you very much!</p>
+<p>Yang mahu boleh DM saya di Telegram :<a href="https://t.me/donnazmi">@Donnazmi</a> untuk menambah baik.</p>
+<p>Feel free to improve with your payloads and techniques !</p>
+<p>It is planned to add an exploit module every day next Year.</p>
+<p>so welcome every one of you the driving force for me to move forward!</p>
+<p>Disclaimer: <strong>This project is only for authorized use, and it is forbidden to use this project for illegal operations, otherwise you will bear the consequences yourself</strong></p>
+<p>Feture API Search To Collect IP and Websites :</p>
+<p>【√】One-Click Exploiter More than 50 TOP CVE Module .</p>
+<p>【√】Config Criminal IP Max Search : 10,000</p>
+<p>【√】Config Shodan Search</p>
+<p>【√】Config Hunter Search</p>
+<p>【√】Pentest Payloads All The Thing</p>
+<p>To-Do List | Things to do</p>
+<p>*(Priority) Add other search engines, such as: Censys, Zoomeye, Quakeetc.</p>
+<p>*Add proxy mode.</p>
+<p>*Others have not been thought of yet, if you guys have any ideas, you can issuesput them directly in it.</p>
+<h2 id="Video">
+<a href="#Video" class="headerlink" title="Video">
+</a>[Video :]</h1></h2>
+<center><iframe style="width: 720px; height: 400px; margin: 0.5rem" src="https://www.youtube.com/embed/AErdWon-sIU" frameborder="0" allowfullscreen=""></iframe></center>
+<p><a href="https://t.me/donnazmi">Telegram</a> , <a href="https://www.facebook.com/ungku.nazmi.71">Facebook</a> , <a href="https://ungkunazmi.github.io/">Github</a></p>
+
+<p>Thanks for reading.</p>
+
+
+<h2 id="DISCLAIMER">
+<a href="#DISCLAIMER" class="headerlink" title="DISCLAIMER"></a>[DISCLAIMER]</h2>
+
+<p><em>Anything u learned from the Blog just for research and educational purposes only
+Do not use the knowledge for illegal things.</em></p>
+<br>Sorry about my english, is so bad😅</a>
+<br>If you have any questions or suggestions, make sure to hit me in any of these mediums or the comments.      </a>
+<br>Thanks for reading.</a>]]></content>
+      <categories>
+        <category>Tool</category>
+      </categories>
+      <tags>
+        <tag>Tool</tag>
+      </tags>
+  </entry>
 
  
 </search>
