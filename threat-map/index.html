@@ -11,7 +11,7 @@
     <style>
         :root {
             --bg-dark: #050505;
-            --panel-bg: rgba(10, 15, 12, 0.95);
+            --panel-bg: rgba(10, 15, 12, 0.85); /* Lebih telus untuk mobile */
             --text-main: #a3b8cc;
             --text-muted: #4a5e52;
             --accent-green: #00ff88;
@@ -53,11 +53,14 @@
         #map {
             flex-grow: 1;
             height: 100%;
+            width: 100%;
             background: #000;
             z-index: 1;
+            position: absolute; /* Jadikan peta sebagai background utama */
+            top: 0; left: 0;
         }
 
-        /* Panel Kanan (Sidebar) */
+        /* Panel Kanan (Sidebar) - Desktop */
         .sidebar {
             width: 380px;
             background-color: var(--panel-bg);
@@ -67,6 +70,10 @@
             z-index: 10;
             box-shadow: -5px 0 20px rgba(0, 255, 136, 0.05);
             backdrop-filter: blur(10px);
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
         }
 
         .header {
@@ -200,8 +207,7 @@
             left: 20px; 
             width: 50%; 
             max-width: 700px;
-            min-width: 350px;
-            background: rgba(5, 10, 8, 0.95);
+            background: var(--panel-bg);
             border: 1px solid var(--border-color);
             border-left: 3px solid var(--accent-green);
             z-index: 1000;
@@ -277,7 +283,7 @@
         ::-webkit-scrollbar-thumb:hover { background: var(--accent-green); }
 
         /* =========================================
-           MEDIA QUERIES (SUSUN ATUR MOBILE)
+           MEDIA QUERIES (PAPARAN MOBILE - OVERLAY)
            ========================================= */
         
         @media (max-width: 1024px) {
@@ -287,80 +293,95 @@
 
         /* Paparan Telefon Bimbit */
         @media (max-width: 768px) {
-            body {
-                /* Tukar susunan kepada menegak (tiang) */
-                flex-direction: column; 
-            }
+            /* Peta kekal penuh di belakang */
+            #map { height: 100vh; }
 
-            #map {
-                height: 35vh; /* Peta ambil 35% skrin atas */
-                width: 100%;
-                flex-grow: 0;
-            }
-
+            /* Ubah Sidebar menjadi kotak terapung di ATAS */
             .sidebar {
-                width: 100%;
-                /* Ketinggian panel mengambil baki 65% skrin */
-                height: 65vh; 
-                border-left: none;
-                border-top: 2px solid var(--border-color);
-                /* Benarkan scroll menegak untuk panel */
-                overflow-y: auto; 
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                width: auto;
+                height: auto;
+                max-height: 45vh; /* Hadkan tinggi supaya tak tutup peta sepenuhnya */
+                border: 1px solid var(--border-color);
+                border-radius: 6px;
+                background: rgba(10, 15, 12, 0.9);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.8);
             }
 
-            /* Kotak Log dibuat BIASA (bukan fixed/terapung) di bawah sekali */
+            .header {
+                padding: 10px 15px;
+            }
+
+            .panel {
+                padding: 10px 15px;
+            }
+
+            .stats-grid {
+                gap: 8px;
+            }
+
+            .stat-box {
+                padding: 8px;
+            }
+
+            .stat-value { font-size: 18px; }
+            .stat-label { font-size: 9px; }
+
+            .threat-list {
+                padding: 10px 15px;
+                max-height: 150px; /* Benarkan skrol dalam senarai ancaman */
+            }
+            
+            .threat-info { font-size: 11px; margin-bottom: 4px;}
+            .threat-bar-bg { height: 4px; }
+
+            /* Ubah kotak Log menjadi kotak terapung di BAWAH */
             .feed-container {
-                position: relative;
-                bottom: auto;
-                left: auto;
-                width: 100%;
-                max-width: 100%;
-                min-width: 100%;
-                border-left: none;
-                border-top: 3px solid var(--accent-green);
-                border-radius: 0;
-                box-shadow: none;
-                background: #0a0f0d; /* Warna solid supaya jelas */
+                position: absolute;
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                width: auto;
+                max-width: none;
+                border: 1px solid var(--border-color);
+                border-radius: 6px;
+                background: rgba(10, 15, 12, 0.9);
+                box-shadow: 0 -5px 15px rgba(0,0,0,0.8);
+                z-index: 1000;
             }
 
             .feed-content {
-                height: auto; /* Biar ia memanjang ikut skrin */
-                max-height: 200px; /* Hadkan tinggi log */
+                height: 150px; /* Hadkan tinggi log */
             }
 
-            /* Ubah Grid log kepada Flexbox menegak untuk mobile */
+            /* Susun log kembali ke bentuk Grid (Seperti Desktop) tapi dikecilkan */
             .feed-item {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 4px;
-                padding: 8px 0;
-                border-bottom: 1px dashed rgba(255,255,255,0.1);
+                display: grid;
+                grid-template-columns: 110px 110px 1fr; 
+                gap: 5px;
+                padding: 4px 0;
             }
 
-            /* Saiz teks dibesarkan sikit untuk mobile */
-            .feed-item .src { font-size: 13px; font-weight: bold;}
-            .feed-item .dst { font-size: 13px; }
-            .feed-item .vuln { 
-                text-align: left; 
-                font-size: 12px; 
-                margin-top: 2px;
-                background: rgba(255, 0, 60, 0.1);
-                padding: 2px 6px;
-                border-radius: 2px;
+            .feed-item .src,
+            .feed-item .dst,
+            .feed-item .vuln {
+                font-size: 10px; /* Kecilkan fon sikit */
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- PETA (DI ATAS) -->
+    <!-- PETA (DI BELAKANG SEKALI) -->
     <div id="map"></div>
 
-    <!-- PANEL STATISTIK (DI TENGAH) -->
+    <!-- PANEL STATISTIK (DI ATAS) -->
     <div class="sidebar">
         <div class="header">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
             <h1>Gh0ST AI</h1>
             <span class="badge">CRITICAL</span>
         </div>
@@ -393,7 +414,7 @@
         </div>
     </div>
 
-    <!-- LOG SERANGAN (DI BAWAH SEKALI) -->
+    <!-- LOG SERANGAN (DI BAWAH) -->
     <div class="feed-container">
         <div class="feed-header">
             <span>>_ IDS [TARGET: MALAYSIA]</span>
@@ -520,6 +541,7 @@
             const item = document.createElement('div');
             item.className = 'feed-item';
             
+            // Grid format (Sama macam desktop, tapi dikecilkan pada mobile)
             item.innerHTML = `
                 <span class="src" title="${src.name}">[${time}] ${src.name}</span>
                 <span class="dst" title="${dst.name}">➔ ${dst.name}, MY</span>
