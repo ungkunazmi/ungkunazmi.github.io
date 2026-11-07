@@ -192,13 +192,13 @@
         }
 
         /* =========================================
-           KOTAK LOG (IDS FEED) - FIXED LAYOUT
+           KOTAK LOG (IDS FEED) - DESKTOP
            ========================================= */
         .feed-container {
             position: absolute;
             bottom: 20px;
-            left: 20px; /* Diletakkan di KIRI supaya tidak bertindih dengan panel kanan */
-            width: 50%; /* Saiz sederhana */
+            left: 20px; 
+            width: 50%; 
             max-width: 700px;
             min-width: 350px;
             background: rgba(5, 10, 8, 0.95);
@@ -210,7 +210,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             backdrop-filter: blur(8px);
             border-radius: 4px;
-            overflow: hidden; /* Pastikan teks tidak terkeluar */
+            overflow: hidden;
         }
 
         .feed-header {
@@ -238,7 +238,6 @@
 
         .feed-item {
             display: grid;
-            /* Menggunakan grid untuk memastikan teks sejajar dan tidak melimpah */
             grid-template-columns: 130px 130px 1fr; 
             gap: 10px;
             animation: slideIn 0.1s ease-out;
@@ -278,85 +277,87 @@
         ::-webkit-scrollbar-thumb:hover { background: var(--accent-green); }
 
         /* =========================================
-           MEDIA QUERIES (RESPONSIVE SKRIN)
+           MEDIA QUERIES (SUSUN ATUR MOBILE)
            ========================================= */
         
-        /* Skrin Sederhana (Tablet) */
         @media (max-width: 1024px) {
             .feed-container { width: 60%; left: 10px; bottom: 10px; }
             .sidebar { width: 320px; }
         }
 
-        /* Skrin Telefon (Mobile) */
+        /* Paparan Telefon Bimbit */
         @media (max-width: 768px) {
             body {
-                flex-direction: column;
+                /* Tukar susunan kepada menegak (tiang) */
+                flex-direction: column; 
             }
 
             #map {
-                height: 45vh; /* Peta 45% skrin */
+                height: 35vh; /* Peta ambil 35% skrin atas */
                 width: 100%;
+                flex-grow: 0;
             }
 
             .sidebar {
                 width: 100%;
-                height: 55vh; /* Panel statistik 55% skrin */
+                /* Ketinggian panel mengambil baki 65% skrin */
+                height: 65vh; 
                 border-left: none;
                 border-top: 2px solid var(--border-color);
-                overflow-y: auto;
+                /* Benarkan scroll menegak untuk panel */
+                overflow-y: auto; 
             }
 
-            /* Log serangan terapung di bawah */
+            /* Kotak Log dibuat BIASA (bukan fixed/terapung) di bawah sekali */
             .feed-container {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
+                position: relative;
+                bottom: auto;
+                left: auto;
                 width: 100%;
                 max-width: 100%;
                 min-width: 100%;
                 border-left: none;
                 border-top: 3px solid var(--accent-green);
                 border-radius: 0;
-                max-height: 250px;
-                z-index: 9999;
+                box-shadow: none;
+                background: #0a0f0d; /* Warna solid supaya jelas */
             }
 
             .feed-content {
-                height: 180px;
+                height: auto; /* Biar ia memanjang ikut skrin */
+                max-height: 200px; /* Hadkan tinggi log */
             }
 
-            /* Susun log menegak pada mobile supaya tak terpotong */
+            /* Ubah Grid log kepada Flexbox menegak untuk mobile */
             .feed-item {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 2px;
-                padding-bottom: 6px;
+                gap: 4px;
+                padding: 8px 0;
+                border-bottom: 1px dashed rgba(255,255,255,0.1);
             }
 
-            .feed-item .vuln {
-                text-align: left;
-                font-size: 11px;
+            /* Saiz teks dibesarkan sikit untuk mobile */
+            .feed-item .src { font-size: 13px; font-weight: bold;}
+            .feed-item .dst { font-size: 13px; }
+            .feed-item .vuln { 
+                text-align: left; 
+                font-size: 12px; 
+                margin-top: 2px;
+                background: rgba(255, 0, 60, 0.1);
+                padding: 2px 6px;
+                border-radius: 2px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- PETA (DI KIRI) -->
+    <!-- PETA (DI ATAS) -->
     <div id="map"></div>
 
-    <!-- LOG SERANGAN (DI KIRI BAWAH PETA) -->
-    <div class="feed-container">
-        <div class="feed-header">
-            <span>>_ IDS [TARGET: MALAYSIA]</span>
-            <span style="color: var(--accent-red); animation: blink 0.5s infinite;">● FLOOD</span>
-        </div>
-        <div class="feed-content" id="feed-body"></div>
-    </div>
-
-    <!-- PANEL STATISTIK (DI KANAN) -->
+    <!-- PANEL STATISTIK (DI TENGAH) -->
     <div class="sidebar">
         <div class="header">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
@@ -390,6 +391,15 @@
             <h2>Top Threat Vectors</h2>
             <div id="threat-container"></div>
         </div>
+    </div>
+
+    <!-- LOG SERANGAN (DI BAWAH SEKALI) -->
+    <div class="feed-container">
+        <div class="feed-header">
+            <span>>_ IDS [TARGET: MALAYSIA]</span>
+            <span style="color: var(--accent-red); animation: blink 0.5s infinite;">● FLOOD</span>
+        </div>
+        <div class="feed-content" id="feed-body"></div>
     </div>
 
     <!-- Leaflet JS -->
@@ -510,7 +520,6 @@
             const item = document.createElement('div');
             item.className = 'feed-item';
             
-            // Grid layout memastikan alignment sentiasa betul
             item.innerHTML = `
                 <span class="src" title="${src.name}">[${time}] ${src.name}</span>
                 <span class="dst" title="${dst.name}">➔ ${dst.name}, MY</span>
