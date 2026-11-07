@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gh0ST AI - Global Threat Intelligence (High Volume)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gh0ST AI - Threat Intelligence</title>
     
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -37,7 +37,7 @@
             position: relative;
         }
 
-        /* Scanline Effect Overlay */
+        /* Kesan CRT Scanline */
         body::after {
             content: " ";
             display: block;
@@ -49,7 +49,7 @@
             pointer-events: none;
         }
 
-        /* Map Container */
+        /* Peta */
         #map {
             flex-grow: 1;
             height: 100%;
@@ -57,15 +57,15 @@
             z-index: 1;
         }
 
-        /* Sidebar Panels */
+        /* Panel Kanan (Sidebar) */
         .sidebar {
             width: 380px;
             background-color: var(--panel-bg);
-            border-right: 2px solid var(--border-color);
+            border-left: 2px solid var(--border-color);
             display: flex;
             flex-direction: column;
             z-index: 10;
-            box-shadow: 5px 0 20px rgba(0, 255, 136, 0.05);
+            box-shadow: -5px 0 20px rgba(0, 255, 136, 0.05);
             backdrop-filter: blur(10px);
         }
 
@@ -76,7 +76,6 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            position: relative;
         }
 
         .header h1 {
@@ -97,6 +96,7 @@
             font-weight: bold;
             animation: blink 0.5s infinite alternate;
             font-family: var(--font-mono);
+            margin-left: auto;
         }
 
         @keyframes blink {
@@ -119,7 +119,7 @@
             font-family: var(--font-mono);
         }
 
-        /* Live Stats */
+        /* Statistik */
         .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -132,7 +132,6 @@
             padding: 12px;
             border-radius: 4px;
             position: relative;
-            overflow: hidden;
         }
 
         .stat-box::before {
@@ -145,11 +144,10 @@
         .stat-box.red::before { background: var(--accent-red); }
         
         .stat-value {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 700;
             color: #fff;
             font-family: var(--font-mono);
-            text-shadow: 0 0 5px rgba(255,255,255,0.3);
         }
 
         .stat-label {
@@ -157,19 +155,16 @@
             color: var(--text-muted);
             margin-top: 5px;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        /* Top Threats List */
+        /* Senarai Ancaman */
         .threat-list {
             flex-grow: 1;
             overflow-y: auto;
             padding: 20px;
         }
 
-        .threat-item {
-            margin-bottom: 15px;
-        }
+        .threat-item { margin-bottom: 15px; }
 
         .threat-info {
             display: flex;
@@ -179,14 +174,8 @@
             font-family: var(--font-mono);
         }
 
-        .threat-name {
-            color: #fff;
-        }
-
-        .threat-count {
-            color: var(--accent-red);
-            font-weight: bold;
-        }
+        .threat-name { color: #fff; }
+        .threat-count { color: var(--accent-red); font-weight: bold; }
 
         .threat-bar-bg {
             width: 100%;
@@ -194,7 +183,6 @@
             background: #111;
             border-radius: 1px;
             overflow: hidden;
-            border: 1px solid #222;
         }
 
         .threat-bar-fill {
@@ -203,23 +191,30 @@
             box-shadow: 0 0 10px var(--accent-red);
         }
 
-        /* Real-time Feed Overlay */
+        /* =========================================
+           KOTAK LOG (IDS FEED) - FIXED LAYOUT
+           ========================================= */
         .feed-container {
             position: absolute;
-            bottom: 30px;
-            right: 30px;
-            width: 650px;
-            background: rgba(5, 10, 8, 0.85);
+            bottom: 20px;
+            left: 20px; /* Diletakkan di KIRI supaya tidak bertindih dengan panel kanan */
+            width: 50%; /* Saiz sederhana */
+            max-width: 700px;
+            min-width: 350px;
+            background: rgba(5, 10, 8, 0.95);
             border: 1px solid var(--border-color);
             border-left: 3px solid var(--accent-green);
             z-index: 1000;
             display: flex;
             flex-direction: column;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            border-radius: 4px;
+            overflow: hidden; /* Pastikan teks tidak terkeluar */
         }
 
         .feed-header {
-            padding: 12px 15px;
+            padding: 10px 15px;
             border-bottom: 1px solid var(--border-color);
             font-size: 12px;
             font-weight: bold;
@@ -227,7 +222,6 @@
             display: flex;
             justify-content: space-between;
             font-family: var(--font-mono);
-            letter-spacing: 1px;
             background: rgba(0, 255, 136, 0.05);
         }
 
@@ -238,28 +232,31 @@
             font-size: 12px;
             display: flex;
             flex-direction: column;
-            gap: 4px; /* Dirapatkan untuk muat lebih banyak log */
-            max-height: 200px;
+            gap: 4px;
+            height: 180px; 
         }
 
         .feed-item {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            /* Menggunakan grid untuk memastikan teks sejajar dan tidak melimpah */
+            grid-template-columns: 130px 130px 1fr; 
+            gap: 10px;
             animation: slideIn 0.1s ease-out;
             border-bottom: 1px dashed rgba(255,255,255,0.05);
-            padding-bottom: 2px;
+            padding-bottom: 4px;
+            align-items: center;
         }
 
-        .feed-item .src { color: var(--accent-cyan); width: 160px; }
-        .feed-item .dst { color: var(--accent-green); width: 160px; }
-        .feed-item .vuln { color: var(--accent-red); flex-grow: 1; text-align: right; }
+        .feed-item .src { color: var(--accent-cyan); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .feed-item .dst { color: var(--accent-green); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .feed-item .vuln { color: var(--accent-red); text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
         @keyframes slideIn {
-            from { opacity: 0; transform: translateX(20px); }
-            to { opacity: 1; transform: translateX(0); }
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Map Pulse Marker */
+        /* Marker Peta */
         .pulse-marker {
             border: 2px solid var(--accent-red);
             border-radius: 50%;
@@ -275,17 +272,91 @@
             100% { transform: scale(3, 3); opacity: 0; }
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: transparent; }
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
         ::-webkit-scrollbar-thumb { background: var(--border-color); }
         ::-webkit-scrollbar-thumb:hover { background: var(--accent-green); }
 
+        /* =========================================
+           MEDIA QUERIES (RESPONSIVE SKRIN)
+           ========================================= */
+        
+        /* Skrin Sederhana (Tablet) */
+        @media (max-width: 1024px) {
+            .feed-container { width: 60%; left: 10px; bottom: 10px; }
+            .sidebar { width: 320px; }
+        }
+
+        /* Skrin Telefon (Mobile) */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+
+            #map {
+                height: 45vh; /* Peta 45% skrin */
+                width: 100%;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: 55vh; /* Panel statistik 55% skrin */
+                border-left: none;
+                border-top: 2px solid var(--border-color);
+                overflow-y: auto;
+            }
+
+            /* Log serangan terapung di bawah */
+            .feed-container {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                width: 100%;
+                max-width: 100%;
+                min-width: 100%;
+                border-left: none;
+                border-top: 3px solid var(--accent-green);
+                border-radius: 0;
+                max-height: 250px;
+                z-index: 9999;
+            }
+
+            .feed-content {
+                height: 180px;
+            }
+
+            /* Susun log menegak pada mobile supaya tak terpotong */
+            .feed-item {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+                padding-bottom: 6px;
+            }
+
+            .feed-item .vuln {
+                text-align: left;
+                font-size: 11px;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <!-- SIDEBAR PANEL -->
+    <!-- PETA (DI KIRI) -->
+    <div id="map"></div>
+
+    <!-- LOG SERANGAN (DI KIRI BAWAH PETA) -->
+    <div class="feed-container">
+        <div class="feed-header">
+            <span>>_ IDS [TARGET: MALAYSIA]</span>
+            <span style="color: var(--accent-red); animation: blink 0.5s infinite;">● FLOOD</span>
+        </div>
+        <div class="feed-content" id="feed-body"></div>
+    </div>
+
+    <!-- PANEL STATISTIK (DI KANAN) -->
     <div class="sidebar">
         <div class="header">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
@@ -317,23 +388,7 @@
 
         <div class="threat-list">
             <h2>Top Threat Vectors</h2>
-            <div id="threat-container">
-                <!-- Data injected via JS -->
-            </div>
-        </div>
-    </div>
-
-    <!-- MAP ELEMENT -->
-    <div id="map"></div>
-
-    <!-- REAL-TIME ATTACK FEED -->
-    <div class="feed-container">
-        <div class="feed-header">
-            <span>>_ IDS [TARGET: MALAYSIA] - HIGH VOLUME</span>
-            <span style="color: var(--accent-red); animation: blink 0.5s infinite;">● FLOOD</span>
-        </div>
-        <div class="feed-content" id="feed-body">
-            <!-- Feed injected via JS -->
+            <div id="threat-container"></div>
         </div>
     </div>
 
@@ -352,7 +407,7 @@
             subdomains: 'abcd'
         }).addTo(map);
 
-        // 2. DEFINE NODES
+        // 2. DATA NODES
         const malaysiaCities = [
             { name: 'Kuala Lumpur', lat: 3.1390, lng: 101.6869 },
             { name: 'Cyberjaya', lat: 2.9213, lng: 101.6559 },
@@ -401,22 +456,17 @@
             threatContainer.appendChild(div);
         });
 
-        // 4. SIMULATION LOGIC (RIBUAN SERANGAN)
+        // 4. SIMULATION LOGIC
         let totalBlocked = 2150000;
-        let currentAttacksPerSec = 0;
-        let activeLines = 0; // Kawalan untuk pastikan peta tidak hang
+        let activeLines = 0; 
         const MAX_VISUAL_LINES = 15; 
-        
         const feedBody = document.getElementById('feed-body');
 
         function createAttackVisual() {
-            // Hanya lukis garisan jika tidak melebihi had
             if (activeLines >= MAX_VISUAL_LINES) return;
 
             const src = sourceCities[Math.floor(Math.random() * sourceCities.length)];
             const dst = malaysiaCities[Math.floor(Math.random() * malaysiaCities.length)];
-            const vuln = threatVectors[Math.floor(Math.random() * threatVectors.length)];
-
             activeLines++;
 
             const latlngs = [
@@ -426,56 +476,45 @@
             ];
 
             const polyline = L.polyline(latlngs, {
-                color: '#ff003c', 
-                weight: 1,
-                opacity: 0.9,
-                dashArray: '4, 4'
+                color: '#ff003c', weight: 1, opacity: 0.9, dashArray: '4, 4'
             }).addTo(map);
 
             const pulseIcon = L.divIcon({
-                className: 'pulse-marker',
-                iconSize: [15, 15],
-                iconAnchor: [7.5, 7.5]
+                className: 'pulse-marker', iconSize: [15, 15], iconAnchor: [7.5, 7.5]
             });
             const marker = L.marker([dst.lat, dst.lng], {icon: pulseIcon}).addTo(map);
 
-            // Animasi pantas
             setTimeout(() => {
                 map.removeLayer(marker);
                 map.removeLayer(polyline);
                 activeLines--;
-            }, 800); // Garisan hilang dalam 0.8 saat
+            }, 800); 
         }
 
         function updateStatsAndFeed() {
-            // Jana angka rawak antara 1500 hingga 5000 serangan sesaat
-            currentAttacksPerSec = Math.floor(Math.random() * 3500) + 1500;
-            
-            // Tambah nilai ke jumlah blocked
+            const currentAttacksPerSec = Math.floor(Math.random() * 3500) + 1500;
             totalBlocked += (currentAttacksPerSec * 0.5); 
             
-            // Kemas kini UI
             document.getElementById('stat-sec').innerText = currentAttacksPerSec.toLocaleString();
             document.getElementById('stat-blocked').innerText = (totalBlocked / 1000000).toFixed(2) + 'M';
 
-            // Jana 3 log feed serentak untuk efek "flood"
-            for(let i=0; i<3; i++) {
-                addToFeed();
-            }
+            for(let i=0; i<3; i++) { addToFeed(); }
         }
 
         function addToFeed() {
             const src = sourceCities[Math.floor(Math.random() * sourceCities.length)];
             const dst = malaysiaCities[Math.floor(Math.random() * malaysiaCities.length)];
             const vuln = threatVectors[Math.floor(Math.random() * threatVectors.length)];
-            
             const time = new Date().toLocaleTimeString('en-US', { hour12: false });
+            
             const item = document.createElement('div');
             item.className = 'feed-item';
+            
+            // Grid layout memastikan alignment sentiasa betul
             item.innerHTML = `
-                <span class="src">[${time}] ${src.name}</span>
-                <span class="dst">➔ ${dst.name}, MY</span>
-                <span class="vuln">${vuln.name}</span>
+                <span class="src" title="${src.name}">[${time}] ${src.name}</span>
+                <span class="dst" title="${dst.name}">➔ ${dst.name}, MY</span>
+                <span class="vuln" title="${vuln.name}">${vuln.name}</span>
             `;
             
             feedBody.insertBefore(item, feedBody.firstChild);
@@ -485,15 +524,14 @@
             }
         }
 
-        // 5. EXECUTION LOOPS
-        // Loop untuk statistik dan teks log (Sangat Pantas)
+        // 5. LOOPS & RESIZE
         setInterval(updateStatsAndFeed, 200); 
-
-        // Loop untuk visual peta (Sederhana Pantas)
         setInterval(createAttackVisual, 100); 
 
+        window.addEventListener('resize', () => {
+            map.invalidateSize();
+        });
         setTimeout(() => { map.invalidateSize(); }, 200);
-
     </script>
 </body>
 </html>
